@@ -1,3 +1,38 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+create_aluno:
+  path: /alunos
+  controller: App\Controller\ControllerAluno::create
+  methods:
+    - POST
+
+alunos:
+  path: /alunos
+  controller: App\Controller\ControllerAluno::search
+  methods:
+    - GET
+
+create_professor:
+  path: /professor
+  controller: App\Controller\ControllerProfessor::create
+  methods:
+    - POST
+
+professor:
+  path: /professor
+  controller: App\Controller\ControllerProfessor::search
+  methods:
+    - GET
+
+projeto:
+  path: /projeto
+  controller: App\Controller\ControllerProjeto::search
+  methods:
+    - GET
+
+create_projeto:
+  path: /projeto
+  controller: App\Controller\ControllerProjeto::create
+  methods:
+    - POST
