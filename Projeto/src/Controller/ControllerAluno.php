@@ -5,6 +5,7 @@ namespace App\Controller;
 
 
 use App\Helper\AlunoFactory;
+use App\Helper\HandleRequest;
 use App\Repository\AlunoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -12,11 +13,12 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class ControllerAluno extends GenericController
 {
     public function __construct(
-        AlunoRepository $objectRepository,
+        AlunoRepository $alunoRepository,
         EntityManagerInterface $entityManager,
-        AlunoFactory $entityFactory)
+        AlunoFactory $alunoFactory,
+        HandleRequest $handleRequest)
     {
-        parent::__construct($objectRepository, $entityManager, $entityFactory);
+        parent::__construct($alunoRepository, $entityManager, $alunoFactory, $handleRequest);
     }
 
     public function buscarTodos(){

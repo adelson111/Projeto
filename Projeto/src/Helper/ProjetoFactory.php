@@ -5,7 +5,7 @@ namespace App\Helper;
 
 
 use App\Entity\Projeto;
-
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 class ProjetoFactory  implements EntityFactory
 {
     public function create(string $json):Projeto
@@ -17,8 +17,8 @@ class ProjetoFactory  implements EntityFactory
         ->setAcompanhamentoAvaliacaoProjeto($content->acompanhamentoAvaliacaoProjeto)
         ->setAreaConhecimento($content->areaConhecimento)
         ->setCampus($content->campus)
-        ->setDataInicio($content->dataInicio)
-        ->setDataTermino($content->dataTermino)
+        ->setDataInicio( new \DateTime($content->dataInicio))
+        ->setDataTermino(new \DateTime($content->dataTermino))
         ->setFundamentacaoTeorica($content->fundamentacaoTeorica)
         ->setIntroducao($content->introducao)
         ->setJustificativa($content->justificativa)
