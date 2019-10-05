@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-use App\helper\VisitanteFactory;
+use App\Helper\VisitanteFactory;
 use App\Repository\VisitanteRepository;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\EntityManagerInterface;

@@ -26,15 +26,18 @@ abstract class GenericController extends AbstractController
      * @var handleRequest
      */
     private $handleRequest;
+
     public function __construct(
         ObjectRepository $objectRepository,
         EntityManagerInterface $entityManager,
-        EntityFactory $entityFactory
+        EntityFactory $entityFactory,
+        HandleRequest $handleRequest
         )
     {
         $this->objectRepository = $objectRepository;
         $this->entityManager = $entityManager;
         $this->entityFactory = $entityFactory;
+        $this->handleRequest = $handleRequest;
     }
     public function create(Request $request): Response
     {

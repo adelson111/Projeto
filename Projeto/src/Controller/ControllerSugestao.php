@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-use App\helper\SugestaoFactory;
+use App\Helper\SugestaoFactory;
 use App\Repository\SugestaoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 

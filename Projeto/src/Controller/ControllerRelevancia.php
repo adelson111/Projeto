@@ -5,7 +5,7 @@ namespace App\Controller;
 
 
 
-use App\helper\RelevanciaFactory;
+use App\Helper\RelevanciaFactory;
 use App\Repository\RelevanciaRepository;
 use Doctrine\ORM\EntityManagerInterface;
 class ControllerRelevancia extends GenericController

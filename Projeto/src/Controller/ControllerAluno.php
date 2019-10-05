@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-use App\helper\AlunoFactory;
+use App\Helper\AlunoFactory;
 use App\Repository\AlunoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;

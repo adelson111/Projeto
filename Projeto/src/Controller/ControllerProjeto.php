@@ -4,7 +4,7 @@
 namespace App\Controller;
 
 
-use App\helper\ProjetoFactory;
+use App\Helper\ProjetoFactory;
 use App\Repository\ProjetoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 

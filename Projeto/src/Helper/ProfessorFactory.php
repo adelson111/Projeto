@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\helper;
+namespace App\Helper;
 
 
 use App\Entity\Professor;
