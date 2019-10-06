@@ -36,3 +36,9 @@ create_projeto:
   controller: App\Controller\ControllerProjeto::create
   methods:
     - POST
+
+create_visitante:
+  path: /visitantes
+  controller: App\Controller\ControllerVisitante::create
+  methods:
+    - POST

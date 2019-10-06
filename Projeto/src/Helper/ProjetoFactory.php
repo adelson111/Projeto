@@ -10,6 +10,8 @@ class ProjetoFactory  implements EntityFactory
 {
     public function create(string $json):Projeto
     {
+
+
         $content = json_decode($json);
         $projeto = new Projeto();
         $projeto->setNome($content->nome)
