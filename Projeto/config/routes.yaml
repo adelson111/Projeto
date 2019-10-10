@@ -42,3 +42,27 @@ create_visitante:
   controller: App\Controller\ControllerVisitante::create
   methods:
     - POST
+
+vincular_aluno_entity:
+  path: /projeto/vincular/{id}
+  controller: App\Controller\ControllerProjeto::vincularAlunoEntity
+  methods:
+    - PUT
+
+detalheProjeto:
+  path: /projeto/{id}
+  controller: App\Controller\ControllerProjeto::detalheProjeto
+  methods:
+    - GET
+
+adicionar_sugestao:
+  path: /sugestao
+  controller: App\Controller\ControllerSugestao::create
+  methods:
+    - POST
+
+detalhe_sugestao:
+  path: /sugestao
+  controller: App\Controller\ControllerSugestao::search
+  methods:
+    - GET

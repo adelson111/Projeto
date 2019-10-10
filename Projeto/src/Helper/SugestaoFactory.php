@@ -20,8 +20,9 @@ class SugestaoFactory implements EntityFactory
     public function create(string $json):Sugestao
     {
         $content = json_decode($json);
-        $projeto = $this->projeto->find($content->projetoId);
+        $projeto = $this->projeto->find($content->id_projeto);
         $sugestao = new Sugestao();
+        $sugestao->setProjeto($projeto);
         $sugestao->setSugestao($content->sugestao);
         return $sugestao;
     }

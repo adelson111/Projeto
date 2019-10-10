@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +37,16 @@ class Visitante implements \JsonSerializable
      * @ORM\Column(type="string", length=255)
      */
     private $foto;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Sugestao", mappedBy="Visitante")
+     */
+    private $sugestaos;
+
+    public function __construct()
+    {
+        $this->sugestaos = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -91,5 +103,33 @@ class Visitante implements \JsonSerializable
     public function jsonSerialize()
     {
         return ['id'=>$this->getId(),'nome'=>$this->getNome(), 'foto'=>$this->getFoto(),'senha'=>$this->getSenha()];
+    }
+
+    /**
+     * @return Collection|Sugestao[]
+     */
+    public function getSugestaos(): Collection
+    {
+        return $this->sugestaos;
+    }
+
+    public function addSugestao(Sugestao $sugestao): self
+    {
+        if (!$this->sugestaos->contains($sugestao)) {
+            $this->sugestaos[] = $sugestao;
+            $sugestao->addVisitante($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSugestao(Sugestao $sugestao): self
+    {
+        if ($this->sugestaos->contains($sugestao)) {
+            $this->sugestaos->removeElement($sugestao);
+            $sugestao->removeVisitante($this);
+        }
+
+        return $this;
     }
 }
