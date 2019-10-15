@@ -516,38 +516,33 @@ class Projeto implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        $arr = array();
-        $todasSugestoes = new \ArrayIterator();
-        foreach ($this->getSugestoes() as $sugestao){
-            $arr['sugestao'] = $sugestao->getSugestao();
-            $todasSugestoes->append($arr);
-        }
-
-        $arrAluno = array();
-        $todosAlunos = new \ArrayIterator();
-        foreach ($this->getAlunos() as $aluno){
-            $arrAluno['nome'] =$aluno->getNome();
-            $arrAluno['matricula'] =$aluno->getMatricula();
-            $todosAlunos->append($arrAluno);
-        }
-
-        $arrProfessor = array();
-        $todosProfessores = new \ArrayIterator();
-        foreach ($this->getProfessor() as $professor){
-            $arrProfessor['nome'] =$professor->getNome();
-            $arrProfessor['matricula'] =$professor->getMatricula();
-            $todosProfessores->append($arrProfessor);
-        }
 
 
-        return ['id'=>$this->getId(),'nome'=>$this->getNome(), 'tipo'=>$this->getTipo(),'finalizado'=>$this->getFinalizado(),
-        'campus'=>$this->getCampus(), 'dataInicio'=>$this->getDataInicio(), 'dataTermino'=>$this->getDataTermino(),
-            'areaConhecimento'=>$this->getAreaConhecimento(), 'resumo'=>$this->getResumo(), 'introducao'=>$this->getIntroducao(),
-        'justificativa'=>$this->getJustificativa(), 'fundamentacaoTeorica'=>$this->getFundamentacaoTeorica(), 'objetivoGeral'=>$this->getObjetivoGeral(),
-            'metodologiaExecucaoProjeto'=>$this->getMetodologiaExecucaoProjeto(), 'acompanhamentoAvaliacaoProjeto'=>$this->getAcompanhamentoAvaliacaoProjeto(),
-            'resultadoEsperado'=>$this->getResultadoEsperado(), 'referancia'=>$this->getReferencia(), 'professor'=>$this->getProfessor(),
-            'alunos'=>$todosAlunos, 'arquivos'=>$this->getArquivos(), 'resultadoAlcancado'=>$this->getResultadoAlcancado(),
-            'resultadoDisseminacaoEsperado'=>$this->getResultadoDisseminacaoEsperado(), 'observacao'=>$this->getObservacao(),
-            'relevancias'=>$this->getRelevancias(), 'sugestao'=>$todasSugestoes];
+        return [
+            'id'=>$this->getId(),
+            'nome'=>$this->getNome(),
+            'tipo'=>$this->getTipo(),
+            'finalizado'=>$this->getFinalizado(),
+            'campus'=>$this->getCampus(),
+            'dataInicio'=>$this->getDataInicio(),
+            'dataTermino'=>$this->getDataTermino(),
+            'areaConhecimento'=>$this->getAreaConhecimento(),
+            'resumo'=>$this->getResumo(),
+            'introducao'=>$this->getIntroducao(),
+            'justificativa'=>$this->getJustificativa(),
+            'fundamentacaoTeorica'=>$this->getFundamentacaoTeorica(),
+            'objetivoGeral'=>$this->getObjetivoGeral(),
+            'metodologiaExecucaoProjeto'=>$this->getMetodologiaExecucaoProjeto(),
+            'acompanhamentoAvaliacaoProjeto'=>$this->getAcompanhamentoAvaliacaoProjeto(),
+            'resultadoEsperado'=>$this->getResultadoEsperado(),
+            'referancia'=>$this->getReferencia(),
+            'professor'=>$this->getProfessor()->getValues(),
+            'alunos'=>$this->getProfessor()->getValues(),
+            'arquivos'=>$this->getArquivos(),
+            'resultadoAlcancado'=>$this->getResultadoAlcancado(),
+            'resultadoDisseminacaoEsperado'=>$this->getResultadoDisseminacaoEsperado(),
+            'observacao'=>$this->getObservacao(),
+            'relevancias'=>$this->getRelevancias(),
+            'sugestao'=>$this->getSugestoes()->getValues() or null];
     }
 }

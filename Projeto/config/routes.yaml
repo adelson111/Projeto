@@ -55,6 +55,13 @@ detalheProjeto:
   methods:
     - GET
 
+filtarProjeto:
+  path: /projetoFiltro/{texto}
+  controller: App\Controller\ControllerProjeto::pesquisarProjeto
+  methods:
+    - GET
+
+
 adicionar_sugestao:
   path: /sugestao
   controller: App\Controller\ControllerSugestao::create
@@ -66,3 +73,15 @@ detalhe_sugestao:
   controller: App\Controller\ControllerSugestao::search
   methods:
     - GET
+
+lista_visitantes:
+  path: /visitantes
+  controller: App\Controller\ControllerVisitante::search
+  methods:
+    - GET
+
+remove_visitante:
+  path: /visitante/{id}
+  controller: App\Controller\ControllerVisitante::remove
+  methods:
+    - DELETE

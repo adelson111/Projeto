@@ -56,4 +56,23 @@ class ControllerProjeto extends GenericController
         return new JsonResponse($projeto);
 
     }
+
+    public function pesquisarProjeto(String $texto, Request $request):Response
+    {
+        $texto = $request->get('texto');
+        $entity = $this->objectRepository->findByCampus($texto);
+//        $repository = $this->getDoctrine()->getRepository(Projeto::class);
+//        $query = $this->objectRepository->createQueryBuilder('p')->where('p.campus LIKE :campus')->setParameter('campus', '%'.$texto.'%')->getQuery();
+//        $query = $this->objectRepository->createQuery('select * from projeto p WHERE p.campus LIKE :campus')->setParameter('campus', '%'.$texto.'%')->getQuery();
+//        $query = $repository->createQueryBuilder('p')->where('p.nome LIKE :texto')->setParameter('texto', '%'.$texto.'%')->getQuery();
+//        $resultado = $query->getResult();
+        $qb = $this->entityManager->createQueryBuilder();
+        $qb->select('nome')
+            ->from('Projeto', 'p')
+            ->where(
+                $qb->expr()->like('p.campus', "$texto")
+            );
+        return new JsonResponse($qb);
+    }
+
 }

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20191005005825 extends AbstractMigration
+final class Version20191010173351 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -23,6 +23,7 @@ final class Version20191005005825 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE sugestao (id INT AUTO_INCREMENT NOT NULL, projeto_id INT DEFAULT NULL, sugestao LONGTEXT NOT NULL, INDEX IDX_3617989843B58490 (projeto_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE sugestao_visitante (sugestao_id INT NOT NULL, visitante_id INT NOT NULL, INDEX IDX_B005B95FAF0AA99B (sugestao_id), INDEX IDX_B005B95FD80AA8AF (visitante_id), PRIMARY KEY(sugestao_id, visitante_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE visitante (id INT AUTO_INCREMENT NOT NULL, nome VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, senha VARCHAR(255) NOT NULL, foto VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE aluno (id INT AUTO_INCREMENT NOT NULL, nome VARCHAR(255) NOT NULL, cpf VARCHAR(11) NOT NULL, matricula VARCHAR(255) NOT NULL, senha VARCHAR(255) NOT NULL, foto VARCHAR(255) NOT NULL, curso VARCHAR(255) NOT NULL, curriculo_latte VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE professor (id INT AUTO_INCREMENT NOT NULL, nome VARCHAR(255) NOT NULL, cpf VARCHAR(11) NOT NULL, matricula VARCHAR(255) NOT NULL, senha VARCHAR(255) NOT NULL, foto VARCHAR(255) NOT NULL, area_atuacao VARCHAR(255) NOT NULL, curriculo_latte VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
@@ -31,6 +32,8 @@ final class Version20191005005825 extends AbstractMigration
         $this->addSql('CREATE TABLE projeto_professor (projeto_id INT NOT NULL, professor_id INT NOT NULL, INDEX IDX_9D66D5C843B58490 (projeto_id), INDEX IDX_9D66D5C87D2D84D5 (professor_id), PRIMARY KEY(projeto_id, professor_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE projeto_aluno (projeto_id INT NOT NULL, aluno_id INT NOT NULL, INDEX IDX_673B889843B58490 (projeto_id), INDEX IDX_673B8898B2DDF7F4 (aluno_id), PRIMARY KEY(projeto_id, aluno_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE sugestao ADD CONSTRAINT FK_3617989843B58490 FOREIGN KEY (projeto_id) REFERENCES projeto (id)');
+        $this->addSql('ALTER TABLE sugestao_visitante ADD CONSTRAINT FK_B005B95FAF0AA99B FOREIGN KEY (sugestao_id) REFERENCES sugestao (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE sugestao_visitante ADD CONSTRAINT FK_B005B95FD80AA8AF FOREIGN KEY (visitante_id) REFERENCES visitante (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE relevancia ADD CONSTRAINT FK_3FC3EBC643B58490 FOREIGN KEY (projeto_id) REFERENCES projeto (id)');
         $this->addSql('ALTER TABLE projeto_professor ADD CONSTRAINT FK_9D66D5C843B58490 FOREIGN KEY (projeto_id) REFERENCES projeto (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE projeto_professor ADD CONSTRAINT FK_9D66D5C87D2D84D5 FOREIGN KEY (professor_id) REFERENCES professor (id) ON DELETE CASCADE');
@@ -43,6 +46,8 @@ final class Version20191005005825 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        $this->addSql('ALTER TABLE sugestao_visitante DROP FOREIGN KEY FK_B005B95FAF0AA99B');
+        $this->addSql('ALTER TABLE sugestao_visitante DROP FOREIGN KEY FK_B005B95FD80AA8AF');
         $this->addSql('ALTER TABLE projeto_aluno DROP FOREIGN KEY FK_673B8898B2DDF7F4');
         $this->addSql('ALTER TABLE projeto_professor DROP FOREIGN KEY FK_9D66D5C87D2D84D5');
         $this->addSql('ALTER TABLE sugestao DROP FOREIGN KEY FK_3617989843B58490');
@@ -50,6 +55,7 @@ final class Version20191005005825 extends AbstractMigration
         $this->addSql('ALTER TABLE projeto_professor DROP FOREIGN KEY FK_9D66D5C843B58490');
         $this->addSql('ALTER TABLE projeto_aluno DROP FOREIGN KEY FK_673B889843B58490');
         $this->addSql('DROP TABLE sugestao');
+        $this->addSql('DROP TABLE sugestao_visitante');
         $this->addSql('DROP TABLE visitante');
         $this->addSql('DROP TABLE aluno');
         $this->addSql('DROP TABLE professor');
