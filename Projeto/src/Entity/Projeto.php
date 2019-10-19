@@ -537,7 +537,7 @@ class Projeto implements \JsonSerializable
             'resultadoEsperado'=>$this->getResultadoEsperado(),
             'referancia'=>$this->getReferencia(),
             'professor'=>$this->getProfessor()->getValues(),
-            'alunos'=>$this->getProfessor()->getValues(),
+            'alunos'=>$this->getAlunos()->getValues(),
             'arquivos'=>$this->getArquivos(),
             'resultadoAlcancado'=>$this->getResultadoAlcancado(),
             'resultadoDisseminacaoEsperado'=>$this->getResultadoDisseminacaoEsperado(),

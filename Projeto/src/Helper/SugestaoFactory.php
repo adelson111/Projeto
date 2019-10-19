@@ -4,7 +4,6 @@
 namespace App\Helper;
 
 
-use App\Entity\Projeto;
 use App\Entity\Sugestao;
 use App\Repository\ProjetoRepository;
 

@@ -5,18 +5,22 @@ namespace App\Helper;
 
 
 use App\Entity\Projeto;
-use App\Entity\Professor;
 use App\Repository\ProfessorRepository;
 use App\Repository\AlunoRepository;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+
 class ProjetoFactory  implements EntityFactory
 {
     private $professorRepository;
+    /**
+     * @var AlunoRepository
+     */
+    private $alunoRepository;
 
     public function __construct(ProfessorRepository $professorRepository, AlunoRepository $alunoRepository)
     {
-        $this->professorRepository =$professorRepository;
-        $this->alunoRepository =$alunoRepository;
+        $this->professorRepository = $professorRepository;
+        $this->alunoRepository = $alunoRepository;
     }
 
     public function create(string $json):Projeto
@@ -24,8 +28,8 @@ class ProjetoFactory  implements EntityFactory
 
         $content = json_decode($json);
         $projeto = new Projeto();
-        $professor = $this->professorRepository->find($content->id_professor);
         $aluno = $this->alunoRepository->find($content->id_aluno);
+        $professor = $this->professorRepository->find($content->id_professor);
         $projeto->setNome($content->nome)
         ->setFinalizado($content->finalizado)
         ->setAcompanhamentoAvaliacaoProjeto($content->acompanhamentoAvaliacaoProjeto)
@@ -46,8 +50,7 @@ class ProjetoFactory  implements EntityFactory
         ->setTipo($content->tipo)
         ->setResultadoDisseminacaoEsperado($content->resultadoDisseminacaoEsperado)
         ->setArquivos($content->arquivos)
-        ->addProfessor($professor)
-        ->addAluno($aluno);
+        ->addProfessor($professor);
         return $projeto;
     }
 }

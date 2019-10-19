@@ -31,6 +31,5 @@ class ControllerAluno extends GenericController
     {
         $entity->setNome($entityUpdate->setNome())
                 ->setCurso($entityUpdate->setCurso());
-
     }
 }

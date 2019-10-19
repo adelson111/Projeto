@@ -43,9 +43,15 @@ create_visitante:
   methods:
     - POST
 
-vincular_aluno_entity:
+vincularAlunoProjeto:
   path: /projeto/vincular/{id}
   controller: App\Controller\ControllerProjeto::vincularAlunoEntity
+  methods:
+    - PUT
+
+desvincularAlunoProjeto:
+  path: /projeto/desvincular/{id_projeto}/{id_aluno}
+  controller: App\Controller\ControllerProjeto::desvincularAluno
   methods:
     - PUT
 
@@ -61,6 +67,11 @@ filtarProjeto:
   methods:
     - GET
 
+removeProjeto:
+  path: /projeto/{id}
+  controller: App\Controller\ControllerProjeto::remove
+  methods:
+    - DELETE
 
 adicionar_sugestao:
   path: /sugestao
@@ -85,3 +96,7 @@ remove_visitante:
   controller: App\Controller\ControllerVisitante::remove
   methods:
     - DELETE
+
+create_user:
+  path: /visitante
+  controller: App\Controller\ControllerVisitante::create
