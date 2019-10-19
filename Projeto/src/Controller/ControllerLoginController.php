@@ -55,6 +55,8 @@ class ControllerLoginController extends AbstractController
         if(!$this->enconder->isPasswordValid($usuario, $login->password)){
             return new JsonResponse(['erro'=>'Usuário ou senha inválido'], Response::HTTP_UNAUTHORIZED);
         }
+
+
         $token = JWT::encode(['email'=>$usuario->getEmail()], 'chave','HS256');
         return new JsonResponse(['acess_token'=>$token]);
     }
