@@ -58,10 +58,6 @@ class Aluno implements \JsonSerializable
      */
     private $projetos;
 
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Usuario", inversedBy="aluno", cascade={"persist", "remove"})
-     */
-    private $usuario;
 
     public function __construct()
     {
@@ -181,18 +177,6 @@ class Aluno implements \JsonSerializable
             $this->projetos->removeElement($projeto);
             $projeto->removeAluno($this);
         }
-
-        return $this;
-    }
-
-    public function getUsuario(): ?Usuario
-    {
-        return $this->usuario;
-    }
-
-    public function setUsuario(?Usuario $usuario): self
-    {
-        $this->usuario = $usuario;
 
         return $this;
     }

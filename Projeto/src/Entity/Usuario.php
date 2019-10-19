@@ -3,11 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UsuarioRepository")
  */
-class Usuario
+class Usuario implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -17,45 +18,73 @@ class Usuario
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
-    private $login;
+    private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="json")
+     */
+    private $roles = [];
+
+    /**
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
     private $password;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $tipo;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Aluno", mappedBy="usuario", cascade={"persist", "remove"})
-     */
-    private $aluno;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLogin(): ?string
+    public function getEmail(): ?string
     {
-        return $this->login;
+        return $this->email;
     }
 
-    public function setLogin(string $login): self
+    public function setEmail(string $email): self
     {
-        $this->login = $login;
+        $this->email = $email;
 
         return $this;
     }
 
-    public function getPassword(): ?string
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
     {
-        return $this->password;
+        return (string) $this->email;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
+    }
+
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * @see UserInterface
+     */
+    public function getPassword(): string
+    {
+        return (string) $this->password;
     }
 
     public function setPassword(string $password): self
@@ -65,33 +94,20 @@ class Usuario
         return $this;
     }
 
-    public function getTipo(): ?string
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
     {
-        return $this->tipo;
+        // not needed when using the "bcrypt" algorithm in security.yaml
     }
 
-    public function setTipo(string $tipo): self
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
     {
-        $this->tipo = $tipo;
-
-        return $this;
-    }
-
-    public function getAluno(): ?Aluno
-    {
-        return $this->aluno;
-    }
-
-    public function setAluno(?Aluno $aluno): self
-    {
-        $this->aluno = $aluno;
-
-        // set (or unset) the owning side of the relation if necessary
-        $newUsuario = $aluno === null ? null : $this;
-        if ($newUsuario !== $aluno->getUsuario()) {
-            $aluno->setUsuario($newUsuario);
-        }
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }
