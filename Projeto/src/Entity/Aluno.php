@@ -184,6 +184,6 @@ class Aluno implements \JsonSerializable
     public function jsonSerialize()
     {
         return ['id'=>$this->getId(),'nome'=>$this->getNome(), 'cpf'=>$this->getCpf(), 'matricula'=>$this->getMatricula(),
-            'curso'=>$this->getCurso(), 'curriculoLatte'=>$this->getCurriculoLatte(), 'usuario'=>$this->getUsuario()];
+            'curso'=>$this->getCurso(), 'curriculoLatte'=>$this->getCurriculoLatte()];
     }
 }

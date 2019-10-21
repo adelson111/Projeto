@@ -22,6 +22,7 @@ class ControllerAluno extends GenericController
     }
 
     public function buscarTodos(){
+
         $listaAluno = $this->objectRepository->findAll();
         return new JsonResponse($listaAluno);
     }
