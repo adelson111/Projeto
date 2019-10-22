@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 abstract class GenericController extends AbstractController
 {
     /**
@@ -71,6 +72,27 @@ abstract class GenericController extends AbstractController
         $entityList = $this->objectRepository->findAll();
         //var_dump($entityList);
         return new JsonResponse($entityList);
+    }
+    /**
+     * @Route("/send", name="send")
+     */
+    public function sendEmail(\Swift_Mailer $mailer){
+        $message = (new \Swift_Message('Hello Email'))
+            ->setFrom('marciodouglasxavier@gmail.com')
+            ->setTo('marciodouglasxavier@gmail.com')
+            ->setBody(
+                $this->renderView(
+                // templates/emails/registration.html.twig
+                    'Emails/EmailTeste.html.twig',
+                    ['name' => "márcio"]
+                ),
+                'text/html'
+            )
+        ;
+
+        $mailer->send($message);
+        return new JsonResponse("ok");
+
     }
 
     abstract public function updateEntity($entity,$entityUpdate);
