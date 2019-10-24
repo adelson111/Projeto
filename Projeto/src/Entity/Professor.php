@@ -58,6 +58,11 @@ class Professor implements \JsonSerializable
      */
     private $projetos;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Usuario", cascade={"persist", "remove"})
+     */
+    private $Usuario;
+
     public function __construct()
     {
         $this->projetos = new ArrayCollection();
@@ -182,6 +187,18 @@ class Professor implements \JsonSerializable
     public function jsonSerialize()
     {
         return ['id'=>$this->getId(),'nome'=>$this->getNome(), 'cpf'=>$this->getCpf(), 'matricula'=>$this->getMatricula(),
-            'areaAtuacao'=>$this->getAreaAtuacao(), 'curriculoLatte'=>$this->getCurriculoLatte()];
+            'areaAtuacao'=>$this->getAreaAtuacao(), 'curriculoLatte'=>$this->getCurriculoLatte(), 'usuario'=>$this->getUsuario()->getEmail()];
+    }
+
+    public function getUsuario(): ?Usuario
+    {
+        return $this->Usuario;
+    }
+
+    public function setUsuario(?Usuario $Usuario): self
+    {
+        $this->Usuario = $Usuario;
+
+        return $this;
     }
 }

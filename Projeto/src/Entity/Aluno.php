@@ -58,6 +58,12 @@ class Aluno implements \JsonSerializable
      */
     private $projetos;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Usuario", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $usuario;
+
 
     public function __construct()
     {
@@ -185,5 +191,17 @@ class Aluno implements \JsonSerializable
     {
         return ['id'=>$this->getId(),'nome'=>$this->getNome(), 'cpf'=>$this->getCpf(), 'matricula'=>$this->getMatricula(),
             'curso'=>$this->getCurso(), 'curriculoLatte'=>$this->getCurriculoLatte()];
+    }
+
+    public function getUsuario(): ?Usuario
+    {
+        return $this->usuario;
+    }
+
+    public function setUsuario(Usuario $usuario): self
+    {
+        $this->usuario = $usuario;
+
+        return $this;
     }
 }
