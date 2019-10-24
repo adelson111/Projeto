@@ -16,18 +16,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Encoder\EncoderFactoryInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 
-class AlunoFactory extends UserPasswordEncoder implements EntityFactory
+class AlunoFactory implements EntityFactory
 {
     private $usuarioRepository;
-    private $encoder;
+
 
 //    public function __construct(UsuarioRepository $usuarioRepository)
 //    {
 //
 //    }
-    public function __construct(EncoderFactoryInterface $encoderFactory, UsuarioRepository $usuarioRepository)
+    public function __construct(UsuarioRepository $usuarioRepository)
     {
-        parent::__construct($encoderFactory);
         $this->usuarioRepository = $usuarioRepository;
     }
 

@@ -56,7 +56,12 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
     public function supports(Request $request)
     {
         // TODO: Implement supports() method.
-        return $request->getPathInfo() !== '/login';
+        $res = true;
+        if($request->getPathInfo()=='/login') $res = false;
+        if($request->getPathInfo()=='/projeto') $res = false;
+        if($request->getPathInfo()=='/projetoFiltro/') $res = false;
+//        return $request->getPathInfo() !== '/login';
+        return $res;
     }
     /**
      * Get the authentication credentials from the request and return them

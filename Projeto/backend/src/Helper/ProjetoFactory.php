@@ -50,7 +50,8 @@ class ProjetoFactory  implements EntityFactory
         ->setTipo($content->tipo)
         ->setResultadoDisseminacaoEsperado($content->resultadoDisseminacaoEsperado)
         ->setArquivos($content->arquivos)
-        ->addProfessor($professor);
+        ->addProfessor($professor)
+        ->addAluno($aluno);
         return $projeto;
     }
 }
