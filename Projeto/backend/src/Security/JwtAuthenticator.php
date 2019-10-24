@@ -2,6 +2,7 @@
 namespace App\Security;
 use App\Repository\UsuarioRepository;
 use Firebase\JWT\JWT;
+use http\Params;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -57,11 +58,13 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
     {
         // TODO: Implement supports() method.
         $res = true;
-        if($request->getPathInfo()=='/login') $res = false;
-        if($request->getPathInfo()=='/projeto') $res = false;
-        if($request->getPathInfo()=='/projetoFiltro/') $res = false;
+        if($request->getPathInfo()==='/login') $res = false;
+        if($request->getPathInfo()==='/projeto') $res = false;
+        if($request->getPathInfo()==='/projeto/'.$request->get('id')) $res = false;
+        if($request->getPathInfo()==='/projetoFiltro/'.$request->get('texto')) $res = false;
 //        return $request->getPathInfo() !== '/login';
         return $res;
+
     }
     /**
      * Get the authentication credentials from the request and return them

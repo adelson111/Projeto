@@ -16,6 +16,6 @@ if (!\class_exists(srcApp_KernelDevDebugContainer::class, false)) {
 
 return new \ContainerOx53Vik\srcApp_KernelDevDebugContainer([
     'container.build_hash' => 'Ox53Vik',
-    'container.build_id' => '8335173b',
-    'container.build_time' => 1571937820,
+    'container.build_id' => '4bd11d5b',
+    'container.build_time' => 1571942551,
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerOx53Vik');

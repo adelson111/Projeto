@@ -61,6 +61,7 @@ detalheProjeto:
   methods:
     - GET
 
+
 filtarProjeto:
   path: /projetoFiltro/{texto}
   controller: App\Controller\ControllerProjeto::pesquisarProjeto
