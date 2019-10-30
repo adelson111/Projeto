@@ -11,3 +11,6 @@ export default {
 	components: { Header }
 }
 </script>
+<style  scoped>
+  
+</style>
