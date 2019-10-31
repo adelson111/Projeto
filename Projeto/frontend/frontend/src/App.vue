@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <Header />
+    <Header 
+      title="Sistema de Divulgação e Gegenciamento de Projetos Acadêmicos"
+      :hideToggle="false"
+    />
     <Menu />
     <Content />
     <Footer />
