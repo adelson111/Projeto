@@ -3,9 +3,10 @@
 #    controller: App\Controller\DefaultController::index
 create_aluno:
   path: /alunos
-  controller: App\Controller\ControllerAluno::create
+  controller: App\Controller\ControllerAluno::createAluno
   methods:
     - POST
+
 
 alunos:
   path: /alunos
@@ -15,7 +16,7 @@ alunos:
 
 create_professor:
   path: /professor
-  controller: App\Controller\ControllerProfessor::create
+  controller: App\Controller\ControllerProfessor::createProfessor
   methods:
     - POST
 
@@ -24,6 +25,12 @@ professor:
   controller: App\Controller\ControllerProfessor::search
   methods:
     - GET
+
+professor_update:
+  path: /professor/{id}
+  controller: App\Controller\ControllerProfessor::updateProfessor
+  methods:
+    - PUT
 
 projeto:
   path: /projeto

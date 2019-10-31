@@ -3,10 +3,11 @@
 
 namespace App\Helper;
 
-
 use App\Entity\Projeto;
 use App\Repository\ProfessorRepository;
 use App\Repository\AlunoRepository;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 
 class ProjetoFactory  implements EntityFactory
@@ -23,13 +24,18 @@ class ProjetoFactory  implements EntityFactory
         $this->alunoRepository = $alunoRepository;
     }
 
-    public function create(string $json):Projeto
+    public function create(string $json):Response
     {
 
         $content = json_decode($json);
         $projeto = new Projeto();
         $aluno = $this->alunoRepository->find($content->id_aluno);
         $professor = $this->professorRepository->find($content->id_professor);
+
+        if(!$aluno){
+            echo "CHEGOU AQQUI";
+            return new JsonResponse(['error'=>'Student does not exist']);
+        }
         $projeto->setNome($content->nome)
         ->setFinalizado($content->finalizado)
         ->setAcompanhamentoAvaliacaoProjeto($content->acompanhamentoAvaliacaoProjeto)
@@ -52,7 +58,7 @@ class ProjetoFactory  implements EntityFactory
         ->setArquivos($content->arquivos)
         ->addProfessor($professor)
         ->addAluno($aluno);
-        return $projeto;
+        return new JsonResponse($projeto);
     }
 }
 

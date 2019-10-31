@@ -32,22 +32,22 @@ class AlunoFactory implements EntityFactory
 
     public function create(string $json):Aluno
     {
-//        $content = json_decode($json);
-//
-//        $aluno = new Aluno();
-//        $usuario = new Usuario();
-////            $usuario->setEmail($content->email)->setPassword($content->senha);
-//        $usuario->setEmail($content->email)->setPassword($this->encodePassword($usuario, $content->senha));
-//        $aluno->
-//        setNome($content->nome)
-//            ->setCpf($content->cpf)
-//            ->setMatricula($content->matricula)
-//            ->setCurso($content->curso)
-//            ->setFoto($content->foto)
-//            ->setSenha($content->senha)
-//            ->setCurriculoLatte($content->curriculoLatte)
-//            ->setUsuario($usuario);
-//        return $aluno;
+        $content = json_decode($json);
+
+        $aluno = new Aluno();
+        $usuario = new Usuario();
+//            $usuario->setEmail($content->email)->setPassword($content->senha);
+        $usuario->setEmail($content->email)->setPassword($this->encodePassword($usuario, $content->senha));
+        $aluno->
+        setNome($content->nome)
+            ->setCpf($content->cpf)
+            ->setMatricula($content->matricula)
+            ->setCurso($content->curso)
+            ->setFoto($content->foto)
+            ->setSenha($content->senha)
+            ->setCurriculoLatte($content->curriculoLatte)
+            ->setUsuario($usuario);
+        return $aluno;
 
 
     }

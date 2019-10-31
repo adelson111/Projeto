@@ -31,29 +31,34 @@ class ControllerAluno extends GenericController
         $this->encoder1 = $encoder;
     }
 
-    public function create(Request $request): Response
+    public function createAluno(Request $request): Response
     {
         $content = json_decode($request->getContent());
-        if(!$this->usuarioRepository->findByEmail($content->email)) {
-            $aluno = new Aluno();
-            $usuario = new Usuario();
-            //            $usuario->setEmail($content->email)->setPassword($content->senha);
-            $usuario->setEmail($content->email)->setPassword($this->encoder1->encodePassword($usuario, $content->senha));
-            $aluno->
-            setNome($content->nome)
-                ->setCpf($content->cpf)
-                ->setMatricula($content->matricula)
-                ->setCurso($content->curso)
-                ->setFoto($content->foto)
-                ->setSenha($content->senha)
-                ->setCurriculoLatte($content->curriculoLatte)
-                ->setUsuario($usuario);
-            $this->entityManager->persist($aluno);
-            $this->entityManager->flush();
-            return new JsonResponse($aluno);
-        }else{
-            return new JsonResponse(['error'=>'Já existe um usuário com esse e-mail']);
+
+        if($this->usuarioRepository->findByEmail($content->email)) {
+            return new JsonResponse(['error'=>'Já existe um usuário com esse e-mail'], '401');
         }
+
+        if(strlen($content->senha)<7){
+            return new JsonResponse(['error'=>'Senha com menos de 8 caracteres'],'401');
+        }
+
+
+        $aluno = new Aluno();
+        $usuario = new Usuario();
+        $usuario->setEmail($content->email)->setPassword($this->encoder1->encodePassword($usuario, $content->senha));
+        $aluno->
+        setNome($content->nome)
+            ->setCpf($content->cpf)
+            ->setMatricula($content->matricula)
+            ->setCurso($content->curso)
+            ->setFoto($content->foto)
+            ->setSenha($content->senha)
+            ->setCurriculoLatte($content->curriculoLatte)
+            ->setUsuario($usuario);
+        $this->entityManager->persist($aluno);
+        $this->entityManager->flush();
+        return new JsonResponse($aluno);
     }
 
     public function buscarTodos(){

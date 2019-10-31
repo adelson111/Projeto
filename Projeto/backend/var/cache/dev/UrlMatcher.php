@@ -12,11 +12,11 @@ return [
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\ControllerLoginController::index'], null, null, null, false, false, null]],
         '/send' => [[['_route' => 'send', '_controller' => 'App\\Controller\\ControllerVisitante::sendEmail'], null, null, null, false, false, null]],
         '/alunos' => [
-            [['_route' => 'create_aluno', '_controller' => 'App\\Controller\\ControllerAluno::create'], null, ['POST' => 0], null, false, false, null],
+            [['_route' => 'create_aluno', '_controller' => 'App\\Controller\\ControllerAluno::createAluno'], null, ['POST' => 0], null, false, false, null],
             [['_route' => 'alunos', '_controller' => 'App\\Controller\\ControllerAluno::search'], null, ['GET' => 0], null, false, false, null],
         ],
         '/professor' => [
-            [['_route' => 'create_professor', '_controller' => 'App\\Controller\\ControllerProfessor::create'], null, ['POST' => 0], null, false, false, null],
+            [['_route' => 'create_professor', '_controller' => 'App\\Controller\\ControllerProfessor::createProfessor'], null, ['POST' => 0], null, false, false, null],
             [['_route' => 'professor', '_controller' => 'App\\Controller\\ControllerProfessor::search'], null, ['GET' => 0], null, false, false, null],
         ],
         '/projeto' => [
@@ -35,28 +35,32 @@ return [
     ],
     [ // $regexpList
         0 => '{^(?'
-                .'|/projeto(?'
-                    .'|/(?'
-                        .'|vincular/([^/]++)(*:39)'
-                        .'|desvincular/([^/]++)/([^/]++)(*:75)'
-                        .'|([^/]++)(?'
-                            .'|(*:93)'
+                .'|/pro(?'
+                    .'|fessor/([^/]++)(*:29)'
+                    .'|jeto(?'
+                        .'|/(?'
+                            .'|vincular/([^/]++)(*:64)'
+                            .'|desvincular/([^/]++)/([^/]++)(*:100)'
+                            .'|([^/]++)(?'
+                                .'|(*:119)'
+                            .')'
                         .')'
+                        .'|Filtro/([^/]++)(*:144)'
                     .')'
-                    .'|Filtro/([^/]++)(*:117)'
                 .')'
-                .'|/visitante/([^/]++)(*:145)'
+                .'|/visitante/([^/]++)(*:173)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
-        39 => [[['_route' => 'vincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::vincularAlunoEntity'], ['id'], ['PUT' => 0], null, false, true, null]],
-        75 => [[['_route' => 'desvincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::desvincularAluno'], ['id_projeto', 'id_aluno'], ['PUT' => 0], null, false, true, null]],
-        93 => [
+        29 => [[['_route' => 'professor_update', '_controller' => 'App\\Controller\\ControllerProfessor::updateProfessor'], ['id'], ['PUT' => 0], null, false, true, null]],
+        64 => [[['_route' => 'vincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::vincularAlunoEntity'], ['id'], ['PUT' => 0], null, false, true, null]],
+        100 => [[['_route' => 'desvincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::desvincularAluno'], ['id_projeto', 'id_aluno'], ['PUT' => 0], null, false, true, null]],
+        119 => [
             [['_route' => 'detalheProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::detalheProjeto'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'removeProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::remove'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        117 => [[['_route' => 'filtarProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], ['texto'], ['GET' => 0], null, false, true, null]],
-        145 => [
+        144 => [[['_route' => 'filtarProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], ['texto'], ['GET' => 0], null, false, true, null]],
+        173 => [
             [['_route' => 'remove_visitante', '_controller' => 'App\\Controller\\ControllerVisitante::remove'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -4,6 +4,7 @@
 namespace App\Controller;
 
 
+use App\Entity\Aluno;
 use App\Entity\Professor;
 use App\Entity\Usuario;
 use App\Helper\ProfessorFactory;
@@ -32,32 +33,54 @@ class ControllerProfessor extends GenericController
         $this->encoder = $encoder;
     }
 
-    public function create(Request $request):Response
+    public function createProfessor(Request $request):Response
     {
         $content = json_decode($request->getContent());
 
-        if(!$this->usuarioRepository->findByEmail($content->email)){
-            $professor = new Professor();
-            $usuario = new Usuario();
-            $usuario->setEmail($content->email)->setPassword($this->encoder->encodePassword($usuario, $content->senha));
-            $professor->setNome($content->nome)
-                ->setCpf($content->cpf)
-                ->setMatricula($content->matricula)
-                ->setFoto($content->foto)
-                ->setSenha($content->senha)
-                ->setAreaAtuacao($content->areaAtuacao)
-                ->setCurriculoLatte($content->curriculoLatte)
-                ->setUsuario($usuario);
-            $this->entityManager->persist($professor);
-            $this->entityManager->flush();
-            return new JsonResponse($professor);
-        }else{
-            return new JsonResponse(["erro"=>"E-mail já cadastrado"], Response::HTTP_BAD_REQUEST);
+        if($this->usuarioRepository->findByEmail($content->email)){
+            return new JsonResponse(["erro"=>"Já existe um professor com esse e-mail"], '401');
         }
+
+        if(strlen($content->senha)<7){
+            return new JsonResponse(['error'=>'Senha com menos de 8 caracteres'],'401');
+        }
+
+        $professor = new Professor();
+        $usuario = new Usuario();
+        $usuario->setEmail($content->email)->setPassword($this->encoder->encodePassword($usuario, $content->senha));
+        $professor->setNome($content->nome)
+            ->setCpf($content->cpf)
+            ->setMatricula($content->matricula)
+            ->setFoto($content->foto)
+            ->setSenha($content->senha)
+            ->setAreaAtuacao($content->areaAtuacao)
+            ->setCurriculoLatte($content->curriculoLatte)
+            ->setUsuario($usuario);
+        $this->entityManager->persist($professor);
+        $this->entityManager->flush();
+        return new JsonResponse($professor);
 
     }
 
 
+    public function updateProfessor(int $id, Request $request):Response{
+        $content = json_decode($request->getContent());
+        $id = $request->get('id');
+
+
+        $professor = $this->objectRepository->find($id);
+
+        $professor->setNome($content->nome);
+        $professor->setMatricula($content->matricula);
+        $professor->setCpf($content->cpf);
+        $professor->setCurriculoLatte($content->curriculoLatte);
+        $professor->setFoto($content->foto);
+        $professor->setAreaAtuacao($content->areaAtuacao);
+        $professor->setSenha($content->senha);
+        $this->entityManager->flush();
+        return new JsonResponse($professor);
+
+    }
 
 
 
@@ -66,8 +89,17 @@ class ControllerProfessor extends GenericController
         return new JsonResponse($listaProfessor);
     }
 
+    /**
+     * @param $entity
+     * @param $entityUpdate
+     */
     public function updateEntity($entity, $entityUpdate)
     {
         $entity->setNome($entityUpdate->setNome());
+        $entity->setCpf($entityUpdate->setCpf());
+        $entity->setFoto($entityUpdate->setFoto());
+        $entity->setAreaAtuacao($entityUpdate->setAreaAtuacao());
+        $entity->setsetCurriculoLatte($entityUpdate->setsetCurriculoLatte());
+        $entity->setCpf($entityUpdate->setCpf());
     }
 }
