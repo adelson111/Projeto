@@ -61,6 +61,22 @@ class ControllerAluno extends GenericController
         return new JsonResponse($aluno);
     }
 
+
+    public function updateAluno(int $id, Request $request): Response
+    {
+        $content = json_decode($request->getContent());
+        $aluno =$this->objectRepository->find($id);
+        $aluno->
+        setNome($content->nome)
+            ->setCpf($content->cpf)
+            ->setMatricula($content->matricula)
+            ->setCurso($content->curso)
+            ->setFoto($content->foto)
+            ->setCurriculoLatte($content->curriculoLatte);
+        $this->entityManager->flush();
+        return new JsonResponse($aluno);
+    }
+
     public function buscarTodos(){
 
         $listaAluno = $this->objectRepository->findAll();
@@ -71,6 +87,6 @@ class ControllerAluno extends GenericController
     public function updateEntity($entity, $entityUpdate)
     {
         $entity->setNome($entityUpdate->setNome())
-                ->setCurso($entityUpdate->setCurso());
+            ->setCurso($entityUpdate->setCurso());
     }
 }

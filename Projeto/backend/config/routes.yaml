@@ -7,8 +7,13 @@ create_aluno:
   methods:
     - POST
 
+update_aluno:
+  path: /alunos/{id}
+  controller: App\Controller\ControllerAluno::updateAluno
+  methods:
+    - PUT
 
-alunos:
+list_alunos:
   path: /alunos
   controller: App\Controller\ControllerAluno::search
   methods:
@@ -20,23 +25,17 @@ create_professor:
   methods:
     - POST
 
-professor:
+list_professor:
   path: /professor
   controller: App\Controller\ControllerProfessor::search
   methods:
     - GET
 
-professor_update:
+update_professor:
   path: /professor/{id}
   controller: App\Controller\ControllerProfessor::updateProfessor
   methods:
     - PUT
-
-projeto:
-  path: /projeto
-  controller: App\Controller\ControllerProjeto::search
-  methods:
-    - GET
 
 create_projeto:
   path: /projeto
@@ -44,11 +43,11 @@ create_projeto:
   methods:
     - POST
 
-create_visitante:
-  path: /visitantes
-  controller: App\Controller\ControllerVisitante::create
+list_projeto:
+  path: /projeto
+  controller: App\Controller\ControllerProjeto::search
   methods:
-    - POST
+    - GET
 
 vincularAlunoProjeto:
   path: /projeto/vincular/{id}
@@ -62,14 +61,13 @@ desvincularAlunoProjeto:
   methods:
     - PUT
 
-detalheProjeto:
+detail_projeto:
   path: /projeto/{id}
   controller: App\Controller\ControllerProjeto::detalheProjeto
   methods:
     - GET
 
-
-filtarProjeto:
+filter_projeto:
   path: /projetoFiltro/{texto}
   controller: App\Controller\ControllerProjeto::pesquisarProjeto
   methods:
@@ -80,6 +78,12 @@ removeProjeto:
   controller: App\Controller\ControllerProjeto::remove
   methods:
     - DELETE
+
+create_visitante:
+  path: /visitantes
+  controller: App\Controller\ControllerVisitante::create
+  methods:
+    - POST
 
 adicionar_sugestao:
   path: /sugestao
