@@ -3,6 +3,7 @@
     <Header 
       title="Sistema de Divulgação e Gegenciamento de Projetos Acadêmicos"
       :hideToggle="false"
+      :hideUserDropdown="false"
     />
     <Menu />
     <Content />
