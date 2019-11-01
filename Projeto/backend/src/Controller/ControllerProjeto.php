@@ -81,14 +81,16 @@ class ControllerProjeto extends GenericController
         return new JsonResponse($trainings);
     }
 
-    public function desvincularAluno(int $id_projeto, int $id_aluno, Request $request):Response
+    public function desvincularAluno(int $id_projeto, Request $request):Response
     {
 //        $projeto = $this->objectRepository->find($id_projeto);
+        $content = json_decode($request->getContent());
+
         $emp = $this->getDoctrine()->getManager();
         $projeto = $emp->getRepository(Projeto::class)->find($id_projeto);
 
         $em = $this->getDoctrine()->getManager();
-        $aluno = $em->getRepository(Aluno::class)->find($id_aluno);
+        $aluno = $em->getRepository(Aluno::class)->find($content->id_aluno);
 
         $projeto->removeAluno($aluno);
         $em->flush();

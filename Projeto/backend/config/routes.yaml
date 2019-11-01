@@ -62,7 +62,7 @@ vincularAlunoProjeto:
     - PUT
 
 desvincularAlunoProjeto:
-  path: /projeto/desvincular/{id_projeto}/{id_aluno}
+  path: /projeto/desvincular/{id_projeto}
   controller: App\Controller\ControllerProjeto::desvincularAluno
   methods:
     - PUT
