@@ -9,13 +9,13 @@
             <b-card no-body>
                 <b-tabs card>
                     <b-tab title="Projetos" active>
-                        <h1>Projetos</h1>
+                        <ProjectsAdmin/>
                     </b-tab>
                     <b-tab title="Equipe">
-                        <h1>Equipe</h1>
+                        <ToolsAdmin/>
                     </b-tab>
                     <b-tab title="Categoria">
-                        <h1>Categoria</h1>
+                        <CategoryAdmin/>
                     </b-tab>
                 </b-tabs>
             </b-card>
@@ -25,9 +25,12 @@
 
 <script>
 import PageTitle from '../template/PageTitle'
+import CategoryAdmin from './CategoryAdmin'
+import ProjectsAdmin from './ProjectsAdmin'
+import ToolsAdmin from './ToolsAdmin'
 export default {
     name: 'AdminPages',
-    components: { PageTitle }
+    components: { PageTitle, CategoryAdmin, ProjectsAdmin, ToolsAdmin }
 }
 </script>
 

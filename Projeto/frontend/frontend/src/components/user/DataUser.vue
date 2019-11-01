@@ -1,12 +1,12 @@
 <template>
-    <div class="tools-admin">
-        <h1>Equipe componente</h1>
+    <div class="data-user">
+        <h1>Dados Pessoais</h1>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'ToolsAdmin'
+    name: 'DataUser'
 }
 </script>
 
