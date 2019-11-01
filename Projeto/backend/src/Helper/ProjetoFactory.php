@@ -24,7 +24,7 @@ class ProjetoFactory  implements EntityFactory
         $this->alunoRepository = $alunoRepository;
     }
 
-    public function create(string $json):Response
+    public function create(string $json):Projeto
     {
 
         $content = json_decode($json);
@@ -32,10 +32,6 @@ class ProjetoFactory  implements EntityFactory
         $aluno = $this->alunoRepository->find($content->id_aluno);
         $professor = $this->professorRepository->find($content->id_professor);
 
-        if(!$aluno){
-            echo "CHEGOU AQQUI";
-            return new JsonResponse(['error'=>'Student does not exist']);
-        }
         $projeto->setNome($content->nome)
         ->setFinalizado($content->finalizado)
         ->setAcompanhamentoAvaliacaoProjeto($content->acompanhamentoAvaliacaoProjeto)
@@ -58,7 +54,7 @@ class ProjetoFactory  implements EntityFactory
         ->setArquivos($content->arquivos)
         ->addProfessor($professor)
         ->addAluno($aluno);
-        return new JsonResponse($projeto);
+        return $projeto;
     }
 }
 

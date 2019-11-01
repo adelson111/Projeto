@@ -43,6 +43,12 @@ create_projeto:
   methods:
     - POST
 
+update_projeto:
+  path: /projeto/{projetoId}
+  controller: App\Controller\ControllerProjeto::updateProjeto
+  methods:
+    - PUT
+
 list_projeto:
   path: /projeto
   controller: App\Controller\ControllerProjeto::search

@@ -31,6 +31,7 @@ class ControllerProjeto extends GenericController
     public function updateEntity($entity, $entityUpdate)
     {
 
+
     }
 
 
@@ -56,16 +57,6 @@ class ControllerProjeto extends GenericController
         $emP->flush();
 
         return new JsonResponse($projeto);
-//        $repositoryProjeto = $this->getDoctrine()->getRepository(Projeto::class);
-//        $projeto = $repositoryProjeto->find($id);
-//
-//        $repositoryAluno = $this->getDoctrine()->getRepository(Aluno::class);
-//        $aluno = $repositoryAluno->find($content->id_aluno);
-//        $projetoUpdate = new Projeto();
-//
-//        $projeto->addAluno = $projetoUpdate->addAluno($aluno);
-//        $this->entityManager->flush();
-//        return new JsonResponse($projeto);
 
     }
 
@@ -89,16 +80,6 @@ class ControllerProjeto extends GenericController
         return new JsonResponse($trainings);
     }
 
-//    public function desvincularAluno(Projeto $entity, Projeto $entityUpdate,int $id_projeto, int $id_aluno, Request $request):Response
-//    {
-////        $projeto = $this->objectRepository->find($id_projeto);
-//        $em = $this->getDoctrine()->getManager();
-//        $projeto = $em->getRepository(Projeto::class)->find($id_projeto);
-//        $aluno = $em->getRepository(Aluno::class)->find($id_aluno);
-//        $projeto->removeAluno($aluno);
-//        $em->flush();
-//        return new JsonResponse($projeto);
-//    }
     public function desvincularAluno(int $id_projeto, int $id_aluno, Request $request):Response
     {
 //        $projeto = $this->objectRepository->find($id_projeto);
@@ -114,4 +95,36 @@ class ControllerProjeto extends GenericController
         return new JsonResponse($projeto);
     }
 
+    public function updateProjeto(int $projetoId, Request $request): Response
+    {
+        $content = json_decode($request->getContent());
+        $projeto = $this->objectRepository->find($projetoId);
+
+        $aluno = $this->getDoctrine()->getRepository(Aluno::class)->find($content->id_aluno);
+        $professor = $this->getDoctrine()->getRepository(Professor::class)->find($content->id_professor);
+        $projeto->setNome($content->nome)
+            ->setFinalizado($content->finalizado)
+            ->setAcompanhamentoAvaliacaoProjeto($content->acompanhamentoAvaliacaoProjeto)
+            ->setAreaConhecimento($content->areaConhecimento)
+            ->setCampus($content->campus)
+            ->setDataInicio( new \DateTime($content->dataInicio))
+            ->setDataTermino(new \DateTime($content->dataTermino))
+            ->setFundamentacaoTeorica($content->fundamentacaoTeorica)
+            ->setIntroducao($content->introducao)
+            ->setJustificativa($content->justificativa)
+            ->setMetodologiaExecucaoProjeto($content->metodologiaExecucaoProjeto)
+            ->setObjetivoGeral($content->objetivoGeral)
+            ->setObservacao($content->observacao)
+            ->setReferencia($content->referencia)
+            ->setResultadoEsperado($content->resultadoEsperado)
+            ->setResumo($content->resumo)
+            ->setResultadoAlcancado($content->resultadoAlcancado)
+            ->setTipo($content->tipo)
+            ->setResultadoDisseminacaoEsperado($content->resultadoDisseminacaoEsperado)
+            ->setArquivos($content->arquivos)
+            ->addProfessor($professor)
+            ->addAluno($aluno);
+        $this->entityManager->flush();
+        return new JsonResponse($projeto);
+    }
 }

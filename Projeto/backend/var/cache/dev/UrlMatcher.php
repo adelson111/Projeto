@@ -40,29 +40,31 @@ return [
                     .'|fessor/([^/]++)(*:52)'
                     .'|jeto(?'
                         .'|/(?'
-                            .'|vincular/([^/]++)(*:87)'
-                            .'|desvincular/([^/]++)/([^/]++)(*:123)'
+                            .'|([^/]++)(*:78)'
+                            .'|vincular/([^/]++)(*:102)'
+                            .'|desvincular/([^/]++)/([^/]++)(*:139)'
                             .'|([^/]++)(?'
-                                .'|(*:142)'
+                                .'|(*:158)'
                             .')'
                         .')'
-                        .'|Filtro/([^/]++)(*:167)'
+                        .'|Filtro/([^/]++)(*:183)'
                     .')'
                 .')'
-                .'|/visitante/([^/]++)(*:196)'
+                .'|/visitante/([^/]++)(*:212)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
         23 => [[['_route' => 'update_aluno', '_controller' => 'App\\Controller\\ControllerAluno::updateAluno'], ['id'], ['PUT' => 0], null, false, true, null]],
         52 => [[['_route' => 'update_professor', '_controller' => 'App\\Controller\\ControllerProfessor::updateProfessor'], ['id'], ['PUT' => 0], null, false, true, null]],
-        87 => [[['_route' => 'vincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::vincularAlunoEntity'], ['id'], ['PUT' => 0], null, false, true, null]],
-        123 => [[['_route' => 'desvincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::desvincularAluno'], ['id_projeto', 'id_aluno'], ['PUT' => 0], null, false, true, null]],
-        142 => [
+        78 => [[['_route' => 'update_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::updateProjeto'], ['projetoId'], ['PUT' => 0], null, false, true, null]],
+        102 => [[['_route' => 'vincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::vincularAlunoEntity'], ['id'], ['PUT' => 0], null, false, true, null]],
+        139 => [[['_route' => 'desvincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::desvincularAluno'], ['id_projeto', 'id_aluno'], ['PUT' => 0], null, false, true, null]],
+        158 => [
             [['_route' => 'detail_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::detalheProjeto'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'removeProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::remove'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        167 => [[['_route' => 'filter_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], ['texto'], ['GET' => 0], null, false, true, null]],
-        196 => [
+        183 => [[['_route' => 'filter_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], ['texto'], ['GET' => 0], null, false, true, null]],
+        212 => [
             [['_route' => 'remove_visitante', '_controller' => 'App\\Controller\\ControllerVisitante::remove'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
