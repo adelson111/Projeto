@@ -8,7 +8,7 @@
         <div class="stats">
             <Stat 
                 title="Projetos" 
-                :value="10" 
+                :value="stat.name" 
                 icon="fa fa-project-diagram"
                 color="#800000" 
             />
@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         getStats(){
-            axios.get(`${baseApiUrl}/stats`).then(res => this.stat = res.data)
+            axios.get(`${baseApiUrl}/users`).then(res => this.stat = res.data)
         }
     },
     mounted() {
