@@ -13,6 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use function Sodium\add;
 use function Symfony\Component\DependencyInjection\Loader\Configurator\expr;
 
 
@@ -99,7 +100,6 @@ class ControllerProjeto extends GenericController
     {
         $content = json_decode($request->getContent());
         $projeto = $this->objectRepository->find($projetoId);
-
         $aluno = $this->getDoctrine()->getRepository(Aluno::class)->find($content->id_aluno);
         $professor = $this->getDoctrine()->getRepository(Professor::class)->find($content->id_professor);
         $projeto->setNome($content->nome)
@@ -124,6 +124,7 @@ class ControllerProjeto extends GenericController
             ->setArquivos($content->arquivos)
             ->addProfessor($professor)
             ->addAluno($aluno);
+
         $this->entityManager->flush();
         return new JsonResponse($projeto);
     }
