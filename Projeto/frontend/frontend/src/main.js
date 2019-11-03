@@ -4,6 +4,7 @@ import App from './App.vue'
 import './config/bootstrap'
 import store from './config/store'
 import router from './config/router'
+import './config/msgs'
 
 new Vue({
   store,
