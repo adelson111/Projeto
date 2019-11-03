@@ -4,7 +4,7 @@
             <i  class="fa fa-lg" :class="icon"></i>
         </a>
         <h1 class="title">
-            <router-link to="/home"> {{ title }} </router-link>
+            <router-link to="/"> {{ title }} </router-link>
         </h1>
         <UserDropdown v-if="!hideUserDropdown" />
     </header>
