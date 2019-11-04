@@ -7,15 +7,11 @@
 </template>
 
 <script>
-// import { baseApiUrl } from '../../global'
-// import axios from 'axios'
+
 export default {
     name: 'CategoryAdmin',
         data(){
             return{
-                mode: 'save',
-                project: {},
-                projects: [],
                 fields: [
                     { key: 'id', label: 'ID', sortable: true},
                     { key: 'Nome', label: 'Título', sortable: true},
@@ -25,19 +21,6 @@ export default {
             }
     },
 
-    //essa parte serve pra buscar os projetos do backend
-
-    // methods:{
-    //     loadProjects(){ 
-    //         const url = `${ baseApiUrl }/projects`
-    //         axios.get(url).then(res=>{
-    //             this.projects = res.data
-    //         })
-    //     }
-    // },
-    // mount(){
-    //     this.loadProjects()
-    // }
 }
 </script>
 

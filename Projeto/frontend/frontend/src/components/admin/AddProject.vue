@@ -236,17 +236,50 @@
                         </b-form-input>
                     </b-form-group>
                 </b-col>
+                <b-col md="6" sm="12">
+                    <b-form-checkbox class="mt-5 mb-3" id="project-finish" v-model="projectFinish">
+                        Finalizado?
+                    </b-form-checkbox>
+                </b-col>
             </b-row>
+
+            <hr>
+
+            <b-button 
+                variant="primary"
+                v-if="mode === 'save'"
+                @click="save"
+            >Salvar</b-button>
+
+            <b-button
+                variant="danger"
+                v-if="mode === 'remove'"
+                @click="remove"
+            >Excluir</b-button>
+
+            <b-button
+                class="ml-2"
+                @click="reset"
+            >Cancelar</b-button>
+
         </b-form>
     </div>
 </template>
 
 <script>
+// import { showError } from '../../global'
+// import { baseApiUrl } from '../../global'
+// import axios from 'axios'
 
 export default {
     name: 'AddProject',
     data(){
         return {
+            mode: 'save',
+            project: {},
+            projects: [],
+
+            //esses atributos vão vir do backend, deve ser substituido no v-model
             id: '',
             projectName: '',
             projectLocation: '',
@@ -272,8 +305,46 @@ export default {
             students: [],
             relevance: '',
             suggestions: '',
+            projectFinish: false
+            
         }
-    }
+    },
+
+    methods:{
+    //     loadProjects(){ 
+    //         const url = `${ baseApiUrl }/projects`
+    //         axios.get(url).then(res=>{
+    //             this.projects = res.data
+    //         })
+    //     }
+        reset(){
+            this.mode = 'save'
+            // this.project = {}
+            // this.loadProjects
+        },
+        // save(){
+        //     // const method = this.projeto.id ? 'put' : 'post'
+        //     const id = this.projeto.id ? `/${this.projeto.id}` : ''
+        //     axios[method](`${ baseApiUrl }/projetos${id}`, this.projeto)
+        //         .then(()=>{
+        //             this.$toasted.global.defaultSuccess()
+        //             this.reset()
+        //         }).catch(showError)
+        // },
+        // remove(){
+        //     const id = this.projeto.id 
+        //     axios.delete(`${ baseApiUrl }/projetos${id}`, this.projeto)
+        //         .then(()=>{
+        //             this.$toasted.global.defaultSuccess()
+        //             this.reset()
+        //         }).catch(showError)
+        // }
+    },
+    // mount(){
+    //     this.loadProjects()
+    //}
+    
+
 }
 </script>
 
