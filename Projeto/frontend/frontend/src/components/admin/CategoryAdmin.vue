@@ -16,7 +16,7 @@ export default {
                     { key: 'id', label: 'ID', sortable: true},
                     { key: 'Nome', label: 'Título', sortable: true},
                     { key: 'professor', label: 'Professor Responsável', sortable: true},
-                    { key: 'acoes', label: 'Ações'}
+                    { key: 'avaliacao', label: 'Avaliação', sortable:true}
                 ]
             }
     },

@@ -231,9 +231,9 @@
             <b-row>
                 <b-col md="6" sm="12">
                     <b-form-group label="Anexar:" label-for="files" >
-                        <b-form-input id="files" v-model="files" type="file">
+                        <b-form-file id="files" v-model="files" type="file" >
 
-                        </b-form-input>
+                        </b-form-file>
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
