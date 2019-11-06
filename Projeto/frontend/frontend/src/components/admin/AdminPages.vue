@@ -8,13 +8,13 @@
         <div class="admin-pages-tabs">
             <b-card no-body>
                 <b-tabs card>
-                    <b-tab title="Projetos" active>
-                        <ProjectsAdmin/>
+                    <b-tab title="Cadastrar Projeto" active>
+                        <AddProject/>
                     </b-tab>
-                    <b-tab title="Equipe">
+                    <b-tab title="Equipes">
                         <ToolsAdmin/>
                     </b-tab>
-                    <b-tab title="Categoria">
+                    <b-tab title="Projetos">
                         <CategoryAdmin/>
                     </b-tab>
                 </b-tabs>
@@ -26,11 +26,11 @@
 <script>
 import PageTitle from '../template/PageTitle'
 import CategoryAdmin from './CategoryAdmin'
-import ProjectsAdmin from './ProjectsAdmin'
+import AddProject from './AddProject'
 import ToolsAdmin from './ToolsAdmin'
 export default {
     name: 'AdminPages',
-    components: { PageTitle, CategoryAdmin, ProjectsAdmin, ToolsAdmin }
+    components: { PageTitle, CategoryAdmin, AddProject, ToolsAdmin }
 }
 </script>
 
