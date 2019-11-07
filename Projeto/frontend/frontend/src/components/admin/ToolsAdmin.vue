@@ -55,6 +55,8 @@ export default {
         return{
             modeTeacher:'saveTeacher',
             modeStudent:'saveStudent',
+            teachers:[],
+            students: [],
             fields: [
                 { key: 'nome', label: 'Nome', sortable: true},
                 { key: 'perfil', label: 'Perfil', sortable: true},
