@@ -11,11 +11,8 @@
                     <b-tab title="Dados Pessoais" active>
                         <DataUser/>
                     </b-tab>
-                    <b-tab title="Dados de Contato">
-                        <ContactDataUser/>
-                    </b-tab>
-                    <b-tab title="Dados de Endereço">
-                        <AddressDataUser/>
+                    <b-tab title="Minhas Estatísticas">
+                        <StatUser/>
                     </b-tab>
                 </b-tabs>
             </b-card>
@@ -25,12 +22,11 @@
 
 <script>
 import PageTitle from '../template/PageTitle'
-import AddressDataUser from './AddressDataUser'
-import ContactDataUser from './ContactDataUser'
+import StatUser from './StatUser'
 import DataUser from './DataUser'
 export default {
     name: 'User',
-    components: { PageTitle, AddressDataUser, ContactDataUser, DataUser }
+    components: { PageTitle, StatUser, DataUser }
 }
 </script>
 
