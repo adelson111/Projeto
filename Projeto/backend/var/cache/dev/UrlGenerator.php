@@ -16,7 +16,7 @@ return [
     'update_projeto' => [['projetoId'], ['_controller' => 'App\\Controller\\ControllerProjeto::updateProjeto'], [], [['variable', '/', '[^/]++', 'projetoId', true], ['text', '/projeto']], [], []],
     'list_projeto' => [[], ['_controller' => 'App\\Controller\\ControllerProjeto::search'], [], [['text', '/projeto']], [], []],
     'vincularAlunoProjeto' => [['id'], ['_controller' => 'App\\Controller\\ControllerProjeto::vincularAlunoEntity'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/projeto/vincular']], [], []],
-    'desvincularAlunoProjeto' => [['id_projeto', 'id_aluno'], ['_controller' => 'App\\Controller\\ControllerProjeto::desvincularAluno'], [], [['variable', '/', '[^/]++', 'id_aluno', true], ['variable', '/', '[^/]++', 'id_projeto', true], ['text', '/projeto/desvincular']], [], []],
+    'desvincularAlunoProjeto' => [['id_projeto'], ['_controller' => 'App\\Controller\\ControllerProjeto::desvincularAluno'], [], [['variable', '/', '[^/]++', 'id_projeto', true], ['text', '/projeto/desvincular']], [], []],
     'detail_projeto' => [['id'], ['_controller' => 'App\\Controller\\ControllerProjeto::detalheProjeto'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/projeto']], [], []],
     'filter_projeto' => [['texto'], ['_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], [], [['variable', '/', '[^/]++', 'texto', true], ['text', '/projetoFiltro']], [], []],
     'removeProjeto' => [['id'], ['_controller' => 'App\\Controller\\ControllerProjeto::remove'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/projeto']], [], []],

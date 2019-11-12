@@ -39,6 +39,7 @@ class ControllerProjeto extends GenericController
     public function detalheProjeto(int $id): Response{
 
         $entity = $this->objectRepository->find($id);
+
         return new JsonResponse($entity);
 
     }

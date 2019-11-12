@@ -74,6 +74,10 @@ class ComposerStaticInit42696d52cc886051f36ee7009b9cd8e4
             'PhpParser\\' => 10,
             'PackageVersions\\' => 16,
         ),
+        'N' => 
+        array (
+            'Nelmio\\CorsBundle\\' => 18,
+        ),
         'F' => 
         array (
             'Firebase\\JWT\\' => 13,
@@ -295,6 +299,10 @@ class ComposerStaticInit42696d52cc886051f36ee7009b9cd8e4
         'PackageVersions\\' => 
         array (
             0 => __DIR__ . '/..' . '/ocramius/package-versions/src/PackageVersions',
+        ),
+        'Nelmio\\CorsBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/nelmio/cors-bundle',
         ),
         'Firebase\\JWT\\' => 
         array (
