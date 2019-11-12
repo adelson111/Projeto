@@ -18,7 +18,7 @@ export default {
 <style>
     .menuVisitor{
         grid-area: menuVisitor;
-        background-color:#7CD17F;
+        background: linear-gradient(to right , #7CD17F, #A2CBA4);
         
         display: flex;
         justify-content: center;
