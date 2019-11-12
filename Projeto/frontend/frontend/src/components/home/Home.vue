@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         getStats(){
-            axios.get(`${baseApiUrl}/users`).then(res => this.stat = res.data)
+            axios.get(`${baseApiUrl}/projeto`).then(res => this.stat = res.data)
         }
     },
     mounted() {

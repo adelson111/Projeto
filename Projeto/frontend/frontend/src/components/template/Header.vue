@@ -4,7 +4,7 @@
             <i  class="fa fa-lg" :class="icon"></i>
         </a>
         <h1 class="title">
-            <router-link to="/"> {{ title }} </router-link>
+            <router-link to="/home-admin"> {{ title }} </router-link>
         </h1>
         <UserDropdown v-if="!hideUserDropdown" />
     </header>
@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .header{
         grid-area: header;
         background: linear-gradient(to right , #24B22A, #7CD17F);

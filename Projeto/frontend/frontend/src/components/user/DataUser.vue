@@ -6,8 +6,8 @@
            
             <b-row>
                 <b-col md="12" sm="12">
-                    <b-form-group label="Nome:" label-for="teacher-name" >
-                        <b-form-input id="teacher-name" type="text">
+                    <b-form-group label="Nome:" label-for="nome"  >
+                        <b-form-input id="teacher-name" type="text" v-model="professor.nome" :placeholder="professor.nome" >
 
                         </b-form-input>
                     </b-form-group>
@@ -38,10 +38,8 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
-                    <b-form-group label="Área de Atuação:"  label-for="occupation-area">
-                        <b-form-input id="occupation-area">
-
-                        </b-form-input>
+                    <b-form-group label="CPF:" label-for="cpf"  >
+                          <b-form-input id="cpf"></b-form-input>
                     </b-form-group>
                 </b-col>
             </b-row>
@@ -72,8 +70,8 @@
                     </b-form-group>
                 </b-col>
                 <b-col md="6" sm="12">
-                    <b-form-group label="Confirmar Senha:"  label-for="lattes">
-                        <b-form-input id="lattes" type="password">
+                    <b-form-group label="Confirmar Senha:"  label-for="password">
+                        <b-form-input id="password2" type="password">
 
                         </b-form-input>
                     </b-form-group>
@@ -103,13 +101,27 @@
 </template>
 
 <script>
+import axios from 'axios'
+import { baseApiUrl } from '../../global'
+
 export default {
     name: 'DataUser',
     data(){
         return {
-            userdata: {},
-            usersdatas: [],
+            professor: {},
+            professores: [],
         }
+    },
+    methods: {
+        loadTeacher(){       
+            const url = `${baseApiUrl}/projeto`
+            axios.get(url).then(res =>{         
+                this.professor = res.data 
+            })
+        }
+    },
+    mounted() {
+        this.loadTeacher()
     },
 
 }

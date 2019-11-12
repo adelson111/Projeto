@@ -1,6 +1,6 @@
 import Vue from 'vue'
 //conexão com backend
-export const baseApiUrl = '127.0.0.1:4000'
+export const baseApiUrl = 'http://10.193.1.175:8000'
 
 //tratar erros com as mensagens do toasted
 export function showError(e){
