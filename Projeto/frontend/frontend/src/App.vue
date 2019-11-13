@@ -70,7 +70,7 @@ export default {
 
     
     display: grid;
-    grid-template-rows: 60px 40px 900px 30px;
+    grid-template-rows: 60px 40px auto 30px;
     
     grid-template-areas:
         "headerVisitor headerVisitor"
