@@ -5,8 +5,6 @@
             <input type="text" placeholder="Buscar projeto" 
                 class="filter-visitor-field"
             ><i class="fa fa-search fa-lg"></i>
-            
-            
         </div>
     </div>
 </template>
@@ -23,7 +21,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
      .headerVisitor{
         grid-area: headerVisitor;
         background: linear-gradient(to right , #24B22A, #7CD17F);
@@ -36,8 +34,8 @@ export default {
     .headerVisitor  img{
         height: 55px;
         width: 40px;
-        margin-left: 300px;
-        margin-right: 300px;
+        margin-left: 16.6%;
+        margin-right: 16.6%;
     }
 
     .headerVisitor .menu-visitor-filter{
@@ -66,5 +64,15 @@ export default {
         background-color: #fff;
         border-radius: 15px;
         padding-left: 30px;
+    }
+    ul li a{
+        text-decoration: none;
+        font-size: 0.9rem;
+        color: #fff;
+        margin-left: 25px;
+    }
+    ul li a:hover{
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.2);
     }
 </style>

@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style >
     .header{
         grid-area: header;
         background: linear-gradient(to right , #24B22A, #7CD17F);

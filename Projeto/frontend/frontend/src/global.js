@@ -12,3 +12,4 @@ export function showError(e){
         Vue.toasted.global.defaultError()
     }
 }
+
