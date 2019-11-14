@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import logoIF from '../../assets/if.png'
+import logoIF from '../../../assets/if.png'
 export default {
     name: 'HeaderVisitor',
     data() {

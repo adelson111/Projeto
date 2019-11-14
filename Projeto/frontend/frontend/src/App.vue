@@ -27,10 +27,10 @@ import Footer from "./components/template/Footer"
 
 // ******** Visitante **********
 
-import HeaderVisitor from './components/template/HeaderVisitor'
-import MenuVisitor from './components/template/MenuVisitor'
-import ContentVisitor from './components/template/ContentVisitor'
-import FooterVisitor from './components/template/FooterVisitor'
+import HeaderVisitor from './components/template/visitor/HeaderVisitor'
+import MenuVisitor from './components/template/visitor/MenuVisitor'
+import ContentVisitor from './components/template/visitor/ContentVisitor'
+import FooterVisitor from './components/template/visitor/FooterVisitor'
 
 export default {
   name: "app",
