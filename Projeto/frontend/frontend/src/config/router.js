@@ -7,10 +7,12 @@ import User from "../components/user/User";
 import Auth from "../components/auth/Auth";
 Vue.use(VueRouter);
 
+Vue.use(VueRouter);
+
 const routes = [
   {
     name: "home",
-    path: "/",
+    path: "/home-admin",
     component: Home
   },
   {

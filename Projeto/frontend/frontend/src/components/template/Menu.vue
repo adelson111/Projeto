@@ -6,7 +6,7 @@
                 v-model="treeFilter" class="filter-field"
             >
         </div>
-        <Tree :data="treeData" :options="options" :filter="treeFilter" ref="tree" />
+        <Tree :data="treeData"  :filter="treeFilter" ref="tree" />
     </aside>
 </template>
 
