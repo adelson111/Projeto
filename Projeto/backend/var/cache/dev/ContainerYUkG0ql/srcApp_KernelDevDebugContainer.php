@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerOx53Vik;
+namespace ContainerYUkG0ql;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -216,6 +216,11 @@ class srcApp_KernelDevDebugContainer extends Container
             include_once $this->targetDirs[3].'/vendor/twig/twig/src/RuntimeLoader/RuntimeLoaderInterface.php';
             include_once $this->targetDirs[3].'/vendor/twig/twig/src/RuntimeLoader/ContainerRuntimeLoader.php';
             include_once $this->targetDirs[3].'/vendor/symfony/twig-bundle/DependencyInjection/Configurator/EnvironmentConfigurator.php';
+            include_once $this->targetDirs[3].'/vendor/nelmio/cors-bundle/EventListener/CorsListener.php';
+            include_once $this->targetDirs[3].'/vendor/nelmio/cors-bundle/Options/ResolverInterface.php';
+            include_once $this->targetDirs[3].'/vendor/nelmio/cors-bundle/Options/Resolver.php';
+            include_once $this->targetDirs[3].'/vendor/nelmio/cors-bundle/Options/ProviderInterface.php';
+            include_once $this->targetDirs[3].'/vendor/nelmio/cors-bundle/Options/ConfigProvider.php';
             include_once $this->targetDirs[3].'/vendor/psr/log/Psr/Log/LoggerInterface.php';
             include_once $this->targetDirs[3].'/vendor/psr/log/Psr/Log/AbstractLogger.php';
             include_once $this->targetDirs[3].'/vendor/symfony/http-kernel/Log/Logger.php';
@@ -280,6 +285,12 @@ class srcApp_KernelDevDebugContainer extends Container
     {
         $this->services['event_dispatcher'] = $instance = new \Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher(new \Symfony\Component\EventDispatcher\EventDispatcher(), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))), ($this->privates['logger'] ?? ($this->privates['logger'] = new \Symfony\Component\HttpKernel\Log\Logger())), ($this->services['request_stack'] ?? ($this->services['request_stack'] = new \Symfony\Component\HttpFoundation\RequestStack())));
 
+        $instance->addListener('kernel.request', [0 => function () {
+            return ($this->privates['nelmio_cors.cors_listener'] ?? $this->getNelmioCors_CorsListenerService());
+        }, 1 => 'onKernelRequest'], 28);
+        $instance->addListener('kernel.response', [0 => function () {
+            return ($this->privates['nelmio_cors.cors_listener'] ?? $this->getNelmioCors_CorsListenerService());
+        }, 1 => 'onKernelResponse'], 0);
         $instance->addListener('kernel.response', [0 => function () {
             return ($this->privates['response_listener'] ?? ($this->privates['response_listener'] = new \Symfony\Component\HttpKernel\EventListener\ResponseListener('UTF-8')));
         }, 1 => 'onKernelResponse'], 0);
@@ -636,6 +647,16 @@ class srcApp_KernelDevDebugContainer extends Container
     }
 
     /**
+     * Gets the private 'nelmio_cors.cors_listener' shared service.
+     *
+     * @return \Nelmio\CorsBundle\EventListener\CorsListener
+     */
+    protected function getNelmioCors_CorsListenerService()
+    {
+        return $this->privates['nelmio_cors.cors_listener'] = new \Nelmio\CorsBundle\EventListener\CorsListener(new \Nelmio\CorsBundle\Options\Resolver([0 => new \Nelmio\CorsBundle\Options\ConfigProvider($this->parameters['nelmio_cors.map'], $this->getParameter('nelmio_cors.defaults'))]));
+    }
+
+    /**
      * Gets the private 'parameter_bag' shared service.
      *
      * @return \Symfony\Component\DependencyInjection\ParameterBag\ContainerBag
@@ -830,6 +851,7 @@ class srcApp_KernelDevDebugContainer extends Container
         'doctrine.orm.proxy_dir' => false,
         'doctrine_migrations.dir_name' => false,
         'twig.default_path' => false,
+        'nelmio_cors.defaults' => false,
     ];
     private $dynamicParameters = [];
 
@@ -890,6 +912,10 @@ class srcApp_KernelDevDebugContainer extends Container
                     'path' => ($this->targetDirs[3].'/vendor/symfony/twig-bundle'),
                     'namespace' => 'Symfony\\Bundle\\TwigBundle',
                 ],
+                'NelmioCorsBundle' => [
+                    'path' => ($this->targetDirs[3].'/vendor/nelmio/cors-bundle'),
+                    'namespace' => 'Nelmio\\CorsBundle',
+                ],
             ]; break;
             case 'kernel.secret': $value = $this->getEnv('APP_SECRET'); break;
             case 'session.save_path': $value = ($this->targetDirs[0].'/sessions'); break;
@@ -897,6 +923,33 @@ class srcApp_KernelDevDebugContainer extends Container
             case 'doctrine.orm.proxy_dir': $value = ($this->targetDirs[0].'/doctrine/orm/Proxies'); break;
             case 'doctrine_migrations.dir_name': $value = ($this->targetDirs[3].'/src/Migrations'); break;
             case 'twig.default_path': $value = ($this->targetDirs[3].'/templates'); break;
+            case 'nelmio_cors.defaults': $value = [
+                'allow_origin' => [
+                    0 => $this->getEnv('CORS_ALLOW_ORIGIN'),
+                ],
+                'allow_credentials' => false,
+                'allow_headers' => [
+                    0 => 'content-type',
+                    1 => 'authorization',
+                ],
+                'expose_headers' => [
+                    0 => 'Link',
+                ],
+                'allow_methods' => [
+                    0 => 'GET',
+                    1 => 'OPTIONS',
+                    2 => 'POST',
+                    3 => 'PUT',
+                    4 => 'PATCH',
+                    5 => 'DELETE',
+                ],
+                'max_age' => 3600,
+                'hosts' => [
+
+                ],
+                'origin_regex' => true,
+                'forced_allow_origin_value' => NULL,
+            ]; break;
             default: throw new InvalidArgumentException(sprintf('The dynamic parameter "%s" must be defined.', $name));
         }
         $this->loadedDynamicParameters[$name] = true;
@@ -926,6 +979,7 @@ class srcApp_KernelDevDebugContainer extends Container
                 'DoctrineFixturesBundle' => 'Doctrine\\Bundle\\FixturesBundle\\DoctrineFixturesBundle',
                 'SwiftmailerBundle' => 'Symfony\\Bundle\\SwiftmailerBundle\\SwiftmailerBundle',
                 'TwigBundle' => 'Symfony\\Bundle\\TwigBundle\\TwigBundle',
+                'NelmioCorsBundle' => 'Nelmio\\CorsBundle\\NelmioCorsBundle',
             ],
             'kernel.charset' => 'UTF-8',
             'kernel.container_class' => 'srcApp_KernelDevDebugContainer',
@@ -1113,6 +1167,14 @@ class srcApp_KernelDevDebugContainer extends Container
             'twig.form.resources' => [
                 0 => 'form_div_layout.html.twig',
             ],
+            'nelmio_cors.map' => [
+                '^/' => [
+
+                ],
+            ],
+            'nelmio_cors.cors_listener.class' => 'Nelmio\\CorsBundle\\EventListener\\CorsListener',
+            'nelmio_cors.options_resolver.class' => 'Nelmio\\CorsBundle\\Options\\Resolver',
+            'nelmio_cors.options_provider.config.class' => 'Nelmio\\CorsBundle\\Options\\ConfigProvider',
             'console.command.ids' => [
                 0 => 'console.command.public_alias.doctrine_cache.contains_command',
                 1 => 'console.command.public_alias.doctrine_cache.delete_command',

@@ -37,7 +37,7 @@ class AlunoFactory implements EntityFactory
         $aluno = new Aluno();
         $usuario = new Usuario();
 //            $usuario->setEmail($content->email)->setPassword($content->senha);
-        $usuario->setEmail($content->email)->setPassword($this->encodePassword($usuario, $content->senha));
+        $usuario->setEmail($content->email)->setPassword($this->encodePassword($usuario, $content->senha))->setRoles();
         $aluno->
         setNome($content->nome)
             ->setCpf($content->cpf)

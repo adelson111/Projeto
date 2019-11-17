@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\UsuarioRepository;
+use Cassandra\Date;
 use Firebase\JWT\JWT;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -46,7 +47,7 @@ class ControllerLoginController extends AbstractController
     {
         $login = json_decode($request->getContent());
         if(!isset($login->usuario) || !isset($login->password)){
-          return new JsonResponse(['erro'=>'Favor enviar usuário e senha'], Response::HTTP_BAD_REQUEST);
+            return new JsonResponse(['erro'=>'Favor enviar usuário e senha'], Response::HTTP_BAD_REQUEST);
         }
         /**
          * @var User $usuario
@@ -55,9 +56,28 @@ class ControllerLoginController extends AbstractController
         if(!$this->enconder->isPasswordValid($usuario, $login->password)){
             return new JsonResponse(['erro'=>'Usuário ou senha inválido'], Response::HTTP_UNAUTHORIZED);
         }
+        $da = new \DateTime();
+        $payload = array('email'=>$usuario->getEmail(), 'roles'=>$usuario->getRoles(), 'iat'=> $da->getTimestamp(),
+            'exp'=>$da->getTimestamp()+ (60*60*24*3));
+        $token = JWT::encode($payload, 'chave','HS256');
+        return new JsonResponse([$payload, 'acess_token'=>$token]);
+    }
 
-
-        $token = JWT::encode(['email'=>$usuario->getEmail()], 'chave','HS256');
-        return new JsonResponse(['acess_token'=>$token]);
+    /**
+     * @Route("/validationToken", name="validatioToken")
+     */
+    public function validarToken(Request $request){
+        print("AAAAAAAAA");
+        $req_cont = json_decode($request->getContent());
+        $da = new \DateTime();
+        echo $req_cont->acess_token;
+        if($req_cont){
+            $senha = $req_cont->acess_token;
+            $token = JWT::decode($senha, 'chave',array('HS256'));
+            if($token->exp*1000 > $da->getTimestamp()){
+                return new JsonResponse(true);
+            }
+        }
+        return new JsonResponse(false);
     }
 }

@@ -10,6 +10,7 @@ return [
     [ // $staticRoutes
         '/test' => [[['_route' => 'test', '_controller' => 'App\\Controller\\ControllerLoginController::test'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'login', '_controller' => 'App\\Controller\\ControllerLoginController::index'], null, null, null, false, false, null]],
+        '/validationToken' => [[['_route' => 'validatioToken', '_controller' => 'App\\Controller\\ControllerLoginController::validarToken'], null, null, null, false, false, null]],
         '/send' => [[['_route' => 'send', '_controller' => 'App\\Controller\\ControllerVisitante::sendEmail'], null, null, null, false, false, null]],
         '/alunos' => [
             [['_route' => 'create_aluno', '_controller' => 'App\\Controller\\ControllerAluno::createAluno'], null, ['POST' => 0], null, false, false, null],
