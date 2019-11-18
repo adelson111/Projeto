@@ -3,9 +3,19 @@
     <div class="auth-modal">
       <img src="@/assets/login.png" width="100" alt="Logo" />
       <hr />
-      <div class="auth-title">{{showSignup ? 'Cadastro':'Login'}}</div>
-      <input v-model="user.usuario" name="usuario" type="text" placeholder="E-mail" />
-      <input v-model="user.password" name="password" type="password" placeholder="Senha" />
+      <div class="auth-title">{{ showSignup ? "Cadastro" : "Login" }}</div>
+      <input
+        v-model="user.usuario"
+        name="usuario"
+        type="text"
+        placeholder="E-mail"
+      />
+      <input
+        v-model="user.password"
+        name="password"
+        type="password"
+        placeholder="Senha"
+      />
       <button @click="sigin">Entrar</button>
     </div>
   </div>
