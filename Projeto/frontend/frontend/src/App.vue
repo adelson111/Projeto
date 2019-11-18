@@ -1,5 +1,9 @@
 <template>
-  <div id="app" :class="{ 'hide-menu': !isMenuVisible ||!user}" v-if="validatingToken === false">
+  <div
+    id="app"
+    :class="{ 'hide-menu': !isMenuVisible || !user }"
+    v-if="validatingToken === false"
+  >
     <Header
       title="Sistema de Divulgação e Gegenciamento de Projetos Acadêmicos"
       :hideToggle="!user"
@@ -30,17 +34,10 @@ import Footer from "./components/template/Footer";
 import Loading from "./components/template/Loading";
 // ******** Visitante **********
 
-<<<<<<< HEAD
-import HeaderVisitor from './components/template/visitor/HeaderVisitor'
-import MenuVisitor from './components/template/visitor/MenuVisitor'
-import ContentVisitor from './components/template/visitor/ContentVisitor'
-import FooterVisitor from './components/template/visitor/FooterVisitor'
-=======
-import HeaderVisitor from "./components/template/HeaderVisitor";
-import MenuVisitor from "./components/template/MenuVisitor";
-import ContentVisitor from "./components/template/ContentVisitor";
-import FooterVisitor from "./components/template/FooterVisitor";
->>>>>>> 55f065a66cdfddf4ac92110fd65d75d0ea64b76f
+import HeaderVisitor from "./components/template/visitor/HeaderVisitor";
+import MenuVisitor from "./components/template/visitor/MenuVisitor";
+import ContentVisitor from "./components/template/visitor/ContentVisitor";
+import FooterVisitor from "./components/template/visitor/FooterVisitor";
 
 export default {
   name: "app",
