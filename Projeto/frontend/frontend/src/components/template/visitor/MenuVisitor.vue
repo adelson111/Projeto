@@ -1,8 +1,14 @@
 <template>
     <div class="menuVisitor" >
         <b-nav>
-            <b-nav-item  active>Início</b-nav-item>
-            <b-nav-item >Projetos de Pesquisa</b-nav-item>
+            <b-nav-item  active>
+                <router-link to="/">Início</router-link>
+            </b-nav-item>
+            <b-nav-item > 
+                <router-link to="/projetos-de-pesquisa">
+                   Projetos de Pesquisa
+                </router-link>  
+            </b-nav-item>
             <b-nav-item >Projetos de Extensão</b-nav-item>
             <b-nav-item >TCCs</b-nav-item>
             <b-nav-item >Sobre</b-nav-item>

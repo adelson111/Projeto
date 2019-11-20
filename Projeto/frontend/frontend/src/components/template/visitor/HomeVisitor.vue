@@ -1,18 +1,17 @@
 <template>
    <div class="contentVisitor">
-       <router-view></router-view>
-       <!-- <Carousel/>
+       <Carousel/>
        <QuickAcess/>
-       <ProjectDetails/> -->
+       <ProjectDetails/>
    </div>
 </template>
 
 <script>
-// import Carousel from '../visitor/Carousel'
-// import QuickAcess from '../visitor/QuickAcess'
-// import ProjectDetails from '../visitor/ProjectDetails'
+import Carousel from '../visitor/Carousel'
+import QuickAcess from '../visitor/QuickAcess'
+import ProjectDetails from '../visitor/ProjectDetails'
 export default {
-    // components: { Carousel, QuickAcess, ProjectDetails },
+    components: { Carousel, QuickAcess, ProjectDetails },
     name: 'Content' ,
     data(){
         return{

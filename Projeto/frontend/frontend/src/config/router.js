@@ -5,6 +5,8 @@ import Home from "../components/home/Home";
 import AdminPages from "../components/admin/AdminPages";
 import User from "../components/user/User";
 import Auth from "../components/auth/Auth";
+import ResearchProjects from "../components/template/visitor/ResearchProjects";
+import HomeVisitor from "../components/template/visitor/HomeVisitor"
 import { userKey } from "../global";
 Vue.use(VueRouter);
 
@@ -15,6 +17,11 @@ const routes = [
     name: "home",
     path: "/home-admin",
     component: Home
+  },
+  {
+    name: "homeVisitor",
+    path: "/",
+    component: HomeVisitor
   },
   {
     name: "adminPages",
@@ -31,6 +38,11 @@ const routes = [
     name: "auth",
     path: "/auth",
     component: Auth
+  },
+  {
+    name: "researchProjects",
+    path: "/projetos-de-pesquisa",
+    component: ResearchProjects
   }
 ];
 

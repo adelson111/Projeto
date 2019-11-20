@@ -1,9 +1,10 @@
 <template>
     <div class="project-details">
-        
+        <h1>Projetos recentes</h1>
     </div>
 </template> 
 <script>
+
 export default {
     name: 'ProjectDetails'
 }
@@ -20,5 +21,24 @@ export default {
         align-items: center;
         margin-top: 40px;
         background-color: #D5F2C9;
+    }
+    .container { 
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .relevant-projects {
+    background: orangered;
+        width: 100%
+    }
+    .green {
+    background: yellowgreen;
+    }
+    .container > div {
+        font-size: 5vw;
+        padding: .5em;
+        color: white;
+        width: 80%;
     }
 </style>
