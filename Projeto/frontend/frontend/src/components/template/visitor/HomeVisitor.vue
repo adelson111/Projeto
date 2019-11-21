@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .contentVisitor{
         grid-area: contentVisitor;
         background-color: #fff
