@@ -1,8 +1,9 @@
 <template>
     <div class="menuVisitor" >
         <b-nav>
-            <b-nav-item  active>
-                <router-link to="/">Início</router-link>
+            
+            <b-nav-item>
+                <router-link to="/" >Início</router-link>
             </b-nav-item>
             <b-nav-item > 
                 <router-link to="/projetos-de-pesquisa">
@@ -32,6 +33,7 @@ export default {
     name: 'MenuVisitor',
     data(){
         return{
+            active: true
         }
     }
 }
@@ -46,5 +48,5 @@ export default {
         justify-content: center;
         align-items: center;
     }
-
+    
 </style>
