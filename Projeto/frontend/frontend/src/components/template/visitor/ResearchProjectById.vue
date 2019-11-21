@@ -51,4 +51,7 @@ export default {
     .project-content :last-child{
         margin-bottom: 0px;
     }
+    .project-by-id{
+        padding: 20px;
+    }
 </style>
