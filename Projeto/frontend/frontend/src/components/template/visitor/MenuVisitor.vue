@@ -21,7 +21,11 @@
                 </router-link>  
             </b-nav-item>
             <b-nav-item >Sobre</b-nav-item>
-            <b-nav-item >Login</b-nav-item>
+            <b-nav-item > 
+                <router-link to="/login">
+                   Login
+                </router-link>  
+            </b-nav-item>
         </b-nav>
     </div>
 </template>

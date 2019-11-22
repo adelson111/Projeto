@@ -10,6 +10,7 @@ import ExtensionProjects from "../components/template/visitor/ExtensionProjects"
 import HomeVisitor from "../components/template/visitor/HomeVisitor"
 import Tccs from "../components/template/visitor/Tccs"
 import ResearchProjectById from "../components/template/visitor/ResearchProjectById"
+import LoginAndRegister from "../components/login/LoginAndRegister"
 import { userKey } from "../global";
 Vue.use(VueRouter);
 
@@ -61,6 +62,11 @@ const routes = [
     name: "researchProjectById",
     path: "/projetos:id",
     component: ResearchProjectById
+  },
+  {
+    name: "loginAndRegister",
+    path: "/login",
+    component: LoginAndRegister
   },
 ];
 
