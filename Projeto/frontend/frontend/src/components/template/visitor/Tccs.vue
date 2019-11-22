@@ -82,6 +82,7 @@ export default {
         margin-top: 25px;
     }
     .project-item{
+        width: 80%;
         border-radius: 8px;
         margin-bottom: 20px;
         background-color: #fff;

@@ -23,12 +23,16 @@ export default {
 </script>
 
 <style>
-    .contentVisitor{
+    .contentVisitor {
         grid-area: contentVisitor;
         background-color: #fff
         ;
         margin: 20px 0;
-        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        
     }
     
 </style>

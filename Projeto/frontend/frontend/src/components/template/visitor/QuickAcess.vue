@@ -84,13 +84,12 @@ export default {
 <style scoped>
     
     .quick-acess{
-        width: 100vw;
-        height: auto;
         background-color: #fff;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        width: 80%;
         margin-top: 40px;
     }
     .container-fluid{
