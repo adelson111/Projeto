@@ -22,7 +22,19 @@
                     ></b-carousel-slide>
                 </b-carousel>
             </b-col>
-            <b-col cols="4 carousel-coment">col-4</b-col>
+            <b-col cols="4 carousel-coment">
+                <b-card-group deck>
+                    <b-card header="Adcionados Recentemente">
+                        <b-list-group>
+                            <b-list-group-item >Cras justo odio</b-list-group-item>
+                            <b-list-group-item >Dapibus ac facilisis in</b-list-group-item>
+                            <b-list-group-item >Vestibulum at eros</b-list-group-item>
+                            <b-list-group-item >Vestibulum at eros</b-list-group-item>
+                            <b-list-group-item >Vestibulum at eros</b-list-group-item>
+                        </b-list-group>
+                    </b-card>
+                </b-card-group>
+            </b-col>
         </b-row>
     </b-container>
 </template>
@@ -41,15 +53,15 @@ export default {
 
 <style scoped>
     .bv-row{
-        border: 1px solid rebeccapurple;
         padding: 0px;
+        background-color: #fff;
+        padding: 0;
     }
     .carousel-row{
-        border: 1px solid rebeccapurple;
         height: auto;
     }
     .carousel-coment{
-        border: 1px solid rebeccapurple;  
+        
     }
     .carousel-item {
         height: 300px; 
@@ -58,4 +70,15 @@ export default {
         position: relative;
         height: 200px;;
     }
+   .card-deck{
+       margin-right: 0;
+   }
+   .card-header{
+       background-color: #24B22A;
+       color: #fff;
+   }
+   .card-deck{
+       max-height: 300px;
+       overflow: auto;
+   }
 </style>
