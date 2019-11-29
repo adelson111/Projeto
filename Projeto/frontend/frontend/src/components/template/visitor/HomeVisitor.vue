@@ -1,17 +1,17 @@
 <template>
    <div class="contentVisitor">
-       <Carousel/>
+       <CarouselVisitor/>
        <QuickAcess/>
        <ProjectDetails/>
    </div>
 </template>
 
 <script>
-import Carousel from '../visitor/Carousel'
+import CarouselVisitor from '../visitor/CarouselVisitor'
 import QuickAcess from '../visitor/QuickAcess'
 import ProjectDetails from '../visitor/ProjectDetails'
 export default {
-    components: { Carousel, QuickAcess, ProjectDetails },
+    components: { CarouselVisitor, QuickAcess, ProjectDetails },
     name: 'Content' ,
     data(){
         return{
