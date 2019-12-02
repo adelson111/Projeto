@@ -11,6 +11,7 @@ import HomeVisitor from "../components/template/visitor/HomeVisitor"
 import Tccs from "../components/template/visitor/Tccs"
 import ResearchProjectById from "../components/template/visitor/ResearchProjectById"
 import LoginAndRegister from "../components/login/LoginAndRegister"
+import Informations from "../components/template/visitor/Informations"
 import Register from "../components/login/Register"
 import { userKey } from "../global";
 Vue.use(VueRouter);
@@ -74,6 +75,11 @@ const routes = [
     name: "register",
     path: "/cadastro",
     component: Register
+  },
+  {
+    name: "information",
+    path: "/sobre",
+    component: Informations
   },
 ];
 
