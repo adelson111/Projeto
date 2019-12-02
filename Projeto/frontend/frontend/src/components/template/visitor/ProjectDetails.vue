@@ -1,6 +1,13 @@
 <template>
     <div class="project-details">
-        <h1>Projetos recentes</h1>
+        <b-container class="bv-example-row">
+            <b-row>
+                <b-col>col</b-col>
+                <b-col>col</b-col>
+                <b-col>col</b-col>
+                <b-col>col</b-col>
+            </b-row>
+        </b-container>
     </div>
 </template> 
 <script>

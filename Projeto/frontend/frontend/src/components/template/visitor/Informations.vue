@@ -31,5 +31,6 @@ export default {
     
     .jumbotron{
         text-align: justify;
+        margin-top: 20px;
     }
 </style>

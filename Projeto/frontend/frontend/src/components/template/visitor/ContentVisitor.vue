@@ -25,9 +25,7 @@ export default {
 <style>
     .contentVisitor {
         grid-area: contentVisitor;
-        background-color: #fff
-        ;
-        margin: 20px 0;
+        background-color: #fff;
         display: flex;
         flex-direction: column;
         align-items: center;

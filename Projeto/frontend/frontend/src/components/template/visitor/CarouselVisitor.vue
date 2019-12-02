@@ -53,10 +53,16 @@ export default {
 
 <style scoped>
     .bv-row{
-        padding: 0px;
+        width: 80%;
+        border-radius: 8px;
+        margin-bottom: 20px;
         background-color: #fff;
-        padding: 0;
+        padding: 20px;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15)
     }
+
+   
     .carousel-row{
         height: auto;
     }
@@ -80,5 +86,8 @@ export default {
    .card-deck{
        max-height: 300px;
        overflow: auto;
+   }
+   .card-header{
+       text-align: center;
    }
 </style>

@@ -39,6 +39,7 @@ export default {
 
 <style scoped>
     .auth-content{
+        margin-top: 20px;
         height: 100%;
         display: flex;
         justify-content: center;

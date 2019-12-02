@@ -172,7 +172,7 @@ export default {
     }
     .register{
         border-radius: 8px;
-        margin-bottom: 20px;
+        margin-top: 20px;
         background-color: #fff;
         width: 80%;
         padding: 35px;
