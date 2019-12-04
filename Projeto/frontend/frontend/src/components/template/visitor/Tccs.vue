@@ -86,6 +86,7 @@ export default {
         border-radius: 8px;
         margin-top: 20px;
         background-color: #fff;
+        margin-bottom: 20px;
         padding: 20px;
         border: 1px solid rgba(0, 0, 0, 0.2);
         box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15)

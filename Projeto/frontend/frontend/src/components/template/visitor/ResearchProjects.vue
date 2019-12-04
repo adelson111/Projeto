@@ -90,6 +90,7 @@ export default {
         border-radius: 8px;
         padding-bottom: 20px;
         margin-top: 20px;
+        margin-bottom: 20px;
         background-color: #fff;
         width: 80%;
         padding: 20px;

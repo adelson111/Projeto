@@ -106,6 +106,7 @@ export default {
         width: 80%;
         border-radius: 8px;
         margin-top: 20px;
+        margin-bottom: 20px;
         background-color: #fff;
         padding: 20px;
         border: 1px solid rgba(0, 0, 0, 0.2);
