@@ -48,10 +48,11 @@ return [
                                 .'|(*:149)'
                             .')'
                         .')'
-                        .'|Filtro/([^/]++)(*:174)'
+                        .'|Tipo/([^/]++)(*:172)'
+                        .'|Filtro/([^/]++)(*:195)'
                     .')'
                 .')'
-                .'|/visitante/([^/]++)(*:203)'
+                .'|/visitante/([^/]++)(*:224)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -64,8 +65,9 @@ return [
             [['_route' => 'detail_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::detalheProjeto'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'removeProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::remove'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        174 => [[['_route' => 'filter_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], ['texto'], ['GET' => 0], null, false, true, null]],
-        203 => [
+        172 => [[['_route' => 'type_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarTipo'], ['texto'], ['GET' => 0], null, false, true, null]],
+        195 => [[['_route' => 'filter_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], ['texto'], ['GET' => 0], null, false, true, null]],
+        224 => [
             [['_route' => 'remove_visitante', '_controller' => 'App\\Controller\\ControllerVisitante::remove'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -55,6 +55,12 @@ list_projeto:
   methods:
     - GET
 
+type_projeto:
+  path: /projetoTipo/{texto}
+  controller: App\Controller\ControllerProjeto::pesquisarTipo
+  methods:
+    - GET
+
 vincularAlunoProjeto:
   path: /projeto/vincular/{id}
   controller: App\Controller\ControllerProjeto::vincularAlunoEntity

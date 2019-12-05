@@ -82,6 +82,19 @@ class ControllerProjeto extends GenericController
         return new JsonResponse($trainings);
     }
 
+
+    public function pesquisarTipo(String $texto, Request $request):Response
+    {
+        $texto = $request->get('texto');
+        $repository = $this->getDoctrine()->getRepository(Projeto::class);
+        $query = $repository->createQueryBuilder('p')
+            ->where('p.tipo = :texto')
+            ->setParameter('texto', $texto)
+            ->getQuery();
+        $trainings = $query->getResult();
+
+        return new JsonResponse($trainings);
+    }
     public function desvincularAluno(int $id_projeto, Request $request):Response
     {
 //        $projeto = $this->objectRepository->find($id_projeto);
