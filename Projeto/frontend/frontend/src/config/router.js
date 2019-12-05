@@ -6,15 +6,15 @@ import AdminPages from "../components/admin/AdminPages";
 import User from "../components/user/User";
 import Auth from "../components/auth/Auth";
 import ResearchProjects from "../components/template/visitor/ResearchProjects";
-import ExtensionProjects from "../components/template/visitor/ExtensionProjects"
-import HomeVisitor from "../components/template/visitor/HomeVisitor"
-import Tccs from "../components/template/visitor/Tccs"
-import ResearchProjectById from "../components/template/visitor/ResearchProjectById"
-import LoginAndRegister from "../components/login/LoginAndRegister"
-import Informations from "../components/template/visitor/Informations"
-import Register from "../components/login/Register"
+import ExtensionProjects from "../components/template/visitor/ExtensionProjects";
+import HomeVisitor from "../components/template/visitor/HomeVisitor";
+import Tccs from "../components/template/visitor/Tccs";
+import ResearchProjectById from "../components/template/visitor/ResearchProjectById";
+import LoginAndRegister from "../components/login/LoginAndRegister";
+import Informations from "../components/template/visitor/Informations";
+import Register from "../components/login/Register";
 import { userKey } from "../global";
-Vue.use(VueRouter);
+// Vue.use(VueRouter);
 
 Vue.use(VueRouter);
 
@@ -62,7 +62,7 @@ const routes = [
   },
   {
     name: "researchProjectById",
-    path: "/projetos:id",
+    path: "/projetos/:id",
     component: ResearchProjectById
   },
   {
@@ -80,7 +80,7 @@ const routes = [
     name: "information",
     path: "/sobre",
     component: Informations
-  },
+  }
 ];
 
 const Router = new VueRouter({
