@@ -7,12 +7,12 @@
                 
                 <div class="video">
                     <h5>Projeto da Maconha</h5>
-                    <iframe width="470" height="231" src="https://www.youtube.com/embed/qNHMw6oWXAw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="90%" src="https://www.youtube.com/embed/qNHMw6oWXAw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
                 <div class="video">
                     <h5>Projeto da Maconha</h5>
-                    <iframe width="470" height="231" src="https://www.youtube.com/embed/fp9c3d7Gy9o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <iframe width="100%" height="90%" src="https://www.youtube.com/embed/fp9c3d7Gy9o" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
 
             </div>
@@ -71,13 +71,14 @@ export default {
     }
     .conteudo{
         width: 70%;
+        height: 97%;
         background-color: blueviolet;
         margin-right: 15px;
         background-color:#24B22A;
     }
 
-    aside{
-        width: 20%;
+    aside {
+        width: 30%;
         background-color:#24B22A;
         padding-bottom: 30px;
         margin-right: 15px;
@@ -96,6 +97,7 @@ export default {
         padding-top: 0;
         margin-top: 0;
         color: #000;
+        text-align: center;
     }
 
     hr{
