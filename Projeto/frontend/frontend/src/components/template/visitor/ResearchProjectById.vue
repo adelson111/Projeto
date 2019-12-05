@@ -7,6 +7,7 @@
         />
 
         <div class="project-content" v-html="project-content"></div>
+        <div class="fb-comments" data-href="http://localhost:8080/projetos:id" data-width="" data-numposts="5"></div>
     </div>
 </template>
 
