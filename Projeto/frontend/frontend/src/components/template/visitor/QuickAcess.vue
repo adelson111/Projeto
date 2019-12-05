@@ -11,11 +11,6 @@
                             </b-col>
                             <b-col md="8">
                                 <b-card-body title="Trabalhos de Conclusão de Curso">
-                                      
-                                <b-card-text>
-                                    This is a wider card with supporting text as a natural lead-in to additional content.
-                                    This content is a little bit longer.
-                                </b-card-text>
                                 </b-card-body>
                             </b-col>
                             </b-row>
@@ -31,10 +26,7 @@
                             </b-col>
                             <b-col md="8">
                                 <b-card-body title="Projetos de Pesquisa">
-                                <b-card-text>
-                                    This is a wider card with supporting text as a natural lead-in to additional content.
-                                    This content is a little bit longer.
-                                </b-card-text>
+                                
                                 </b-card-body>
                             </b-col>
                             </b-row>
@@ -50,10 +42,7 @@
                             </b-col>
                             <b-col md="8">
                                 <b-card-body title="Projetos de Extensão">
-                                <b-card-text>
-                                    This is a wider card with supporting text as a natural lead-in to additional content.
-                                    This content is a little bit longer.
-                                </b-card-text>
+                                
                                 </b-card-body>
                             </b-col>
                             </b-row>
