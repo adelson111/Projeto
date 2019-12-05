@@ -72,7 +72,6 @@ export default {
     .conteudo{
         width: 70%;
         height: 97%;
-        background-color: blueviolet;
         margin-right: 15px;
         background-color:#24B22A;
     }
