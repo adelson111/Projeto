@@ -5,9 +5,9 @@ import "./config/bootstrap";
 import store from "./config/store";
 import router from "./config/router";
 import "./config/msgs";
-import axios from "axios";
+// import axios from "axios";
 
-axios.defaults.headers.post["Content-Type"] = "application/json";
+// axios.defaults.headers.post["Content-Type"] = "application/json";
 new Vue({
   store,
   router,
