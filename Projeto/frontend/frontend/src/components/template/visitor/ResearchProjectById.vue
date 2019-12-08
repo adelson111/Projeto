@@ -1,8 +1,26 @@
 <template>
-  <div class="project-by-id">
-    <PageTitle icon="fa fa-file-o" :main="project.nome" :sub="project.resumo" />
-    <div class="project-content" v-html="project-content"></div>
-  </div>
+    <div class="project-by-id">
+        <PageTitle 
+            icon="fa fa-file-o" 
+            :main="project.nome" 
+            :sub="project.resumo" 
+        />
+
+        <div class="project-content" v-html="project-content"></div>
+        <div class="fb-comments" 
+            :data-href="url+this.$route.params.id" 
+            data-width="" 
+            data-numposts="5"
+            data-show-faces="true"></div>
+        <br>
+        <div class="fb-like" 
+            :data-href="url+this.$route.params.id"  
+            data-width="" 
+            data-layout="button_count" 
+            data-action="like" 
+            data-size="large" 
+            data-share="false"></div>
+    </div>
 </template>
 
 <script>
@@ -14,7 +32,8 @@ export default {
   components: { PageTitle },
   data: function() {
     return {
-      project: {}
+      project: {},
+      url: "http://localhost:8080/projetos/"
     };
   },
   methods: {

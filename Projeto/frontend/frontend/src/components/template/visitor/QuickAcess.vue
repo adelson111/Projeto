@@ -1,56 +1,23 @@
 <template>
     <div class="quick-acess">
-        <b-container fluid class="p-4 bg-white ">
-            <b-row>
-                <b-col>
-                    <div>
-                        <b-card no-body class="overflow-hidden" style="max-width: 540px;">
-                            <b-row no-gutters>
-                            <b-col md="4">
-                                <router-link to="/"><b-card-img :src="tcc" ></b-card-img></router-link>   
-                            </b-col>
-                            <b-col md="8">
-                                <b-card-body title="Trabalhos de Conclusão de Curso">
-                                </b-card-body>
-                            </b-col>
-                            </b-row>
-                        </b-card>
-                    </div>
-                </b-col>
-                <b-col>
-                    <div>
-                        <b-card no-body class="overflow-hidden" style="max-width: 540px;">
-                            <b-row no-gutters>
-                            <b-col md="4">
-                                <router-link to="/"><b-card-img :src="research" ></b-card-img>  </router-link>
-                            </b-col>
-                            <b-col md="8">
-                                <b-card-body title="Projetos de Pesquisa">
-                                
-                                </b-card-body>
-                            </b-col>
-                            </b-row>
-                        </b-card>
-                    </div>
-                </b-col>
-                <b-col>
-                    <div>
-                        <b-card no-body class="overflow-hidden" style="max-width: 540px;">
-                            <b-row no-gutters>
-                            <b-col md="4">
-                                <router-link to="/"><b-card-img :src="extension" ></b-card-img> </router-link>
-                            </b-col>
-                            <b-col md="8">
-                                <b-card-body title="Projetos de Extensão">
-                                
-                                </b-card-body>
-                            </b-col>
-                            </b-row>
-                        </b-card>
-                    </div>
-                </b-col>
-            </b-row>
-        </b-container>
+        <div class="pesquisa projetos">
+            <img class="img-verdinha" :src="tcc" alt="">
+            <div class="infor-proj">
+                <h4>Projetos de Pesquisa</h4>
+            </div>
+        </div>
+        <div class="extensao projetos">
+            <img class="img-verdinha" :src="research" alt="">
+            <div class="infor-proj">
+                <h4>Projetos de Extensão</h4>
+            </div>
+        </div>
+        <div class="tcc projetos">
+            <img class="img-verdinha" :src="extension" alt="">
+            <div class="infor-proj">
+                <h4>TCC</h4>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -76,33 +43,37 @@ export default {
         background-color: #fff;
         display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         width: 80%;
-        margin-top: 40px;
-    }
-    .container-fluid{
-        width: 90%;
-        height: auto;
-        margin: 0px 10px;
-        background: #fff;
+        height: 300px;
+        margin-top: 20px;
         flex-wrap: wrap;
     }
 
-    .card-body{
-        text-align: center;
-        margin-top: 40px;
+    .projetos{
+        width: 30%;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        padding: 10px;
     }
 
-    h4{
-        font-size: 1.2rem;
-        color: black;
-        font-weight: 100;
-        flex-grow: 1;
+    .img-verdinha{
+        width: 150px;
+        height: 250px;;
+    }
+
+    .infor-proj{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .infor-proj h4{
         text-align: center;
     }
-    .overflow-hidden{ 
-        border:  none
-    }
-    
+
+
 </style>
