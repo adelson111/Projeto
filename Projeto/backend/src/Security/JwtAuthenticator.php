@@ -61,7 +61,10 @@ class JwtAuthenticator extends AbstractGuardAuthenticator
         if($request->getPathInfo()==='/login') $res = false;
         if($request->getPathInfo()==='/validationToken') $res = false;
         if($request->getPathInfo()==='/alunos' && $_SERVER['REQUEST_METHOD']==='POST') $res = false;
+        if($request->getPathInfo()==='/alunos' && $_SERVER['REQUEST_METHOD']==='GET') $res = false;
         if($request->getPathInfo()==='/professor' && $_SERVER['REQUEST_METHOD']==='POST') $res = false;
+        if($request->getPathInfo()==='/professor' && $_SERVER['REQUEST_METHOD']==='GET') $res = false;
+        if($request->getPathInfo()==='/projeto' && $_SERVER['REQUEST_METHOD']==='POST') $res = false;
         if($request->getPathInfo()==='/projeto' && $_SERVER['REQUEST_METHOD']==='GET') $res = false;
         if($request->getPathInfo()==='/projetoTipo/'.$request->get('texto') && $_SERVER['REQUEST_METHOD']==='GET') $res = false;
         if($request->getPathInfo()==='/projeto/'.$request->get('id') && $_SERVER['REQUEST_METHOD']==='GET') $res = false;

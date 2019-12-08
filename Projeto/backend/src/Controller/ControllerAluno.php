@@ -46,13 +46,13 @@ class ControllerAluno extends GenericController
 
         $aluno = new Aluno();
         $usuario = new Usuario();
-        $usuario->setEmail($content->email)->setPassword($this->encoder1->encodePassword($usuario, $content->senha));
+        $usuario->setEmail($content->email)->setPassword($this->encoder1->encodePassword($usuario, $content->senha))->setRoles([$content->tipo]);
         $aluno->
         setNome($content->nome)
             ->setCpf($content->cpf)
             ->setMatricula($content->matricula)
             ->setCurso($content->curso)
-            ->setFoto($content->foto)
+            ->setFoto("SEM IMAGEM")
             ->setSenha($content->senha)
             ->setCurriculoLatte($content->curriculoLatte)
             ->setUsuario($usuario);

@@ -29,9 +29,10 @@ class ProjetoFactory  implements EntityFactory
 
         $content = json_decode($json);
         $projeto = new Projeto();
+//        $aluno = $this->alunoRepository->find(2);
         $aluno = $this->alunoRepository->find($content->id_aluno);
         $professor = $this->professorRepository->find($content->id_professor);
-
+//        $professor = $this->professorRepository->find(1);
         $projeto->setNome($content->nome)
         ->setFinalizado($content->finalizado)
         ->setAcompanhamentoAvaliacaoProjeto($content->acompanhamentoAvaliacaoProjeto)
@@ -51,7 +52,8 @@ class ProjetoFactory  implements EntityFactory
         ->setResultadoAlcancado($content->resultadoAlcancado)
         ->setTipo($content->tipo)
         ->setResultadoDisseminacaoEsperado($content->resultadoDisseminacaoEsperado)
-        ->setArquivos($content->arquivos)
+        ->setArquivos([])
+//        ->setArquivos($content->arquivos)
         ->addProfessor($professor)
         ->addAluno($aluno);
         return $projeto;

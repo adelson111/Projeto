@@ -47,11 +47,11 @@ class ControllerProfessor extends GenericController
 
         $professor = new Professor();
         $usuario = new Usuario();
-        $usuario->setEmail($content->email)->setPassword($this->encoder->encodePassword($usuario, $content->senha));
+        $usuario->setEmail($content->email)->setPassword($this->encoder->encodePassword($usuario, $content->senha))->setRoles([$content->tipo]);
         $professor->setNome($content->nome)
             ->setCpf($content->cpf)
             ->setMatricula($content->matricula)
-            ->setFoto($content->foto)
+            ->setFoto("SEM IMAGEM")
             ->setSenha($content->senha)
             ->setAreaAtuacao($content->areaAtuacao)
             ->setCurriculoLatte($content->curriculoLatte)
