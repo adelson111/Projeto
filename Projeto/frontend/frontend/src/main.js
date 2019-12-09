@@ -1,13 +1,12 @@
 import Vue from "vue";
-import App from "./App.vue";
-import "./config/vuemq";
+import App from "./App";
 import "./config/bootstrap";
+import "./config/msgs";
+import "./config/vuemq";
 import store from "./config/store";
 import router from "./config/router";
-import "./config/msgs";
-// import axios from "axios";
-import Carousel3d from "vue-carousel-3d";
 
+import Carousel3d from "vue-carousel-3d";
 // axios.defaults.headers.post["Content-Type"] = "application/json";
 new Vue({
   store,

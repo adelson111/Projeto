@@ -25,8 +25,8 @@
 
 <script>
 // import axios from "axios";
-// import { baseApiUrl, userKey } from "./global";
-// import { mapState } from "vuex";
+// import { baseApiUrl, userKey } from "@/global";
+import { mapState } from "vuex";
 import Header from "./components/template/Header";
 import Menu from "./components/template/Menu";
 import Content from "./components/template/Content";
@@ -52,43 +52,38 @@ export default {
     FooterVisitor,
     Loading
   },
-  // computed: mapState(["isMenuVisible", "user"]),
+  computed: mapState(["isMenuVisible", "user"]),
   data() {
     return {
       validatingToken: true
     };
   },
-  // methods: {
-  //   async validateToken() {
-  //     this.validatingToken = true;
-
-  //     const json = localStorage.getItem(userKey);
-  //     const userData = JSON.parse(json);
-  //     this.$store.commit("setUser", null);
-
-  //     if (!userData) {
-  //       this.validatingToken = false;
-  //       this.$router.push({ name: "auth" });
-  //       return;
-  //     }
-
-  //     const res = await axios.post(`${baseApiUrl}/validationToken`, {
-  //       acess_token: userData.acess_token
-  //     });
-  //     alert(res);
-  //     if (res.data) {
-  //       this.$store.commit("setUser", userData);
-  //     } else {
-  //       localStorage.removeItem(userKey);
-  //       this.$router.push({ name: "auth" });
-  //     }
-
-  //     this.validatingToken = false;
-  //   }
-  // },
-  // created() {
-  //   this.validateToken();
-  // }
+  methods: {
+    // async validateToken() {
+    //   this.validatingToken = true;
+    //   const json = localStorage.getItem(userKey);
+    //   const userData = JSON.parse(json);
+    //   this.$store.commit("setUser", null);
+    //   // if (!userData) {
+    //   //   this.validatingToken = false;
+    //   //   this.$router.push({ name: "auth" });
+    //   //   return;
+    //   // }
+    //   const res = await axios.post(`${baseApiUrl}/validationToken`, {
+    //     acess_token: userData.acess_token
+    //   });
+    //   if (res.data) {
+    //     this.$store.commit("setUser", userData);
+    //   } else {
+    //     localStorage.removeItem(userKey);
+    //     this.$router.push({ name: "auth" });
+    //   }
+    //   this.validatingToken = false;
+    // }
+  },
+  created() {
+    this.validateToken();
+  }
 };
 </script>
 <style>

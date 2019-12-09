@@ -5,14 +5,22 @@
       <b-row>
         <b-col md="12" sm="12">
           <b-form-group label="Professor:" label-for="professor">
-            <b-form-select v-model="project.id_professor" :options="teachers" id="professor"></b-form-select>
+            <b-form-select
+              v-model="project.id_professor"
+              :options="teachers"
+              id="professor"
+            ></b-form-select>
           </b-form-group>
         </b-col>
       </b-row>
       <b-row>
         <b-col md="12" sm="12">
           <b-form-group label="Aluno:" label-for="aluno">
-            <b-form-select v-model="project.id_aluno" :options="students" id="aluno"></b-form-select>
+            <b-form-select
+              v-model="project.id_aluno"
+              :options="students"
+              id="aluno"
+            ></b-form-select>
           </b-form-group>
         </b-col>
       </b-row>
@@ -47,11 +55,18 @@
       <b-row>
         <b-col md="6" sm="12">
           <b-form-group label="Tipo:" label-for="project-type">
-            <b-form-select v-model="project.tipo" :options="options" id="project-type"></b-form-select>
+            <b-form-select
+              v-model="project.tipo"
+              :options="options"
+              id="project-type"
+            ></b-form-select>
           </b-form-group>
         </b-col>
         <b-col md="6" sm="12">
-          <b-form-group label="Área de Conhecimento:" label-for="project-location">
+          <b-form-group
+            label="Área de Conhecimento:"
+            label-for="project-location"
+          >
             <b-form-input
               id="project-location"
               v-model="project.areaConhecimento"
@@ -105,7 +120,10 @@
       </b-row>
       <b-row>
         <b-col md="12" sm="12">
-          <b-form-group label="Resultado Alcançado:" label-for="resultadoAlcancado">
+          <b-form-group
+            label="Resultado Alcançado:"
+            label-for="resultadoAlcancado"
+          >
             <VueEditor
               id="resultadoAlcancado"
               v-model="project.resultadoAlcancado"
@@ -147,7 +165,10 @@
 
       <b-row>
         <b-col md="12" sm="12">
-          <b-form-group label="Fundamentação Teórica" label-for="theoretical-foundation">
+          <b-form-group
+            label="Fundamentação Teórica"
+            label-for="theoretical-foundation"
+          >
             <VueEditor
               id="theoretical-foundation"
               v-model="project.fundamentacaoTeorica"
@@ -203,7 +224,10 @@
 
       <b-row>
         <b-col md="12" sm="12">
-          <b-form-group label="Acompanhamento de Execução do Projeto" label-for="executionTracking">
+          <b-form-group
+            label="Acompanhamento de Execução do Projeto"
+            label-for="executionTracking"
+          >
             <VueEditor
               id="executionTracking"
               v-model="project.metodologiaExecucaoProjeto"
@@ -234,7 +258,10 @@
 
       <b-row>
         <b-col md="12" sm="12">
-          <b-form-group label="Reusltados Disseminação Esperado" label-for="expectedOutcome">
+          <b-form-group
+            label="Reusltados Disseminação Esperado"
+            label-for="expectedOutcome"
+          >
             <VueEditor
               id="expectedOutcome"
               v-model="project.resultadoDisseminacaoEsperado"
@@ -248,7 +275,10 @@
 
       <b-row>
         <b-col md="12" sm="12">
-          <b-form-group label="Reusltados Esperados" label-for="resultadoEsperado">
+          <b-form-group
+            label="Reusltados Esperados"
+            label-for="resultadoEsperado"
+          >
             <VueEditor
               id="resultadoEsperado"
               v-model="project.resultadoEsperado"
@@ -291,7 +321,11 @@
       <b-row>
         <b-col md="6" sm="12">
           <b-form-group label="Anexar:" label-for="files">
-            <b-form-file id="files" v-model="project.arquivos" type="file"></b-form-file>
+            <b-form-file
+              id="files"
+              v-model="project.arquivos"
+              type="file"
+            ></b-form-file>
           </b-form-group>
         </b-col>
         <b-col md="6" sm="12">
@@ -299,15 +333,20 @@
             class="mt-5 mb-3"
             id="project-finish"
             v-model="project.finalizado"
-          >Finalizado?</b-form-checkbox>
+            >Finalizado?</b-form-checkbox
+          >
         </b-col>
       </b-row>
 
       <hr />
 
-      <b-button variant="primary" v-if="mode === 'save'" @click="save">Salvar</b-button>
+      <b-button variant="primary" v-if="mode === 'save'" @click="save"
+        >Salvar</b-button
+      >
 
-      <b-button variant="danger" v-if="mode === 'remove'" @click="remove">Excluir</b-button>
+      <b-button variant="danger" v-if="mode === 'remove'" @click="remove"
+        >Excluir</b-button
+      >
 
       <b-button class="ml-2" @click="reset">Cancelar</b-button>
     </b-form>
@@ -427,5 +466,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -13,7 +13,10 @@
         <b-collapse id="nav-collapse" is-nav>
           <!-- Right aligned nav items -->
           <b-navbar-nav class="ml-auto">
-            <b-form-select v-model="selected" :options="options"></b-form-select>
+            <b-form-select
+              v-model="selected"
+              :options="options"
+            ></b-form-select>
           </b-navbar-nav>
         </b-collapse>
       </b-navbar>
@@ -30,14 +33,16 @@
     <hr />
 
     <div class="load-more">
-      <button v-if="loadMore" class="btn btn-lg btn-outline-success">Carregar Mais</button>
+      <button v-if="loadMore" class="btn btn-lg btn-outline-success">
+        Carregar Mais
+      </button>
     </div>
   </div>
 </template>
 
 <script>
 // import PageTitle from '../../template/PageTitle'
-import { baseApiUrl } from "../../../global";
+import { baseApiUrl } from "@/global";
 import axios from "axios";
 import ProjetoItem from "./ProjetoItem";
 export default {
@@ -65,9 +70,8 @@ export default {
   },
   methods: {
     getProjetos() {
-      axios
-        .get(`${baseApiUrl}/projetoTipo/Projeto-de-Pesquisa`)
-        .then(res => (this.projects = res.data));
+      const url = `${baseApiUrl}/projetoTipo/Projeto-de-Pesquisa`;
+      axios.get(url).then(res => (this.projects = res.data));
     }
   },
   mounted() {

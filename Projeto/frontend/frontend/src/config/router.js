@@ -4,7 +4,6 @@ import VueRouter from "vue-router";
 import Home from "../components/home/Home";
 import AdminPages from "../components/admin/AdminPages";
 import User from "../components/user/User";
-import Auth from "../components/auth/Auth";
 import ResearchProjects from "../components/template/visitor/ResearchProjects";
 import ExtensionProjects from "../components/template/visitor/ExtensionProjects";
 import HomeVisitor from "../components/template/visitor/HomeVisitor";
@@ -13,7 +12,8 @@ import ResearchProjectById from "../components/template/visitor/ResearchProjectB
 import LoginAndRegister from "../components/login/LoginAndRegister";
 import Informations from "../components/template/visitor/Informations";
 import Register from "../components/login/Register";
-import { userKey } from "../global";
+import Auth from "../components/auth/Auth";
+import { userKey } from "@/global";
 // Vue.use(VueRouter);
 
 Vue.use(VueRouter);
@@ -39,11 +39,6 @@ const routes = [
     name: "user",
     path: "/user",
     component: User
-  },
-  {
-    name: "auth",
-    path: "/auth",
-    component: Auth
   },
   {
     name: "researchProjects",
@@ -80,15 +75,20 @@ const routes = [
     name: "information",
     path: "/sobre",
     component: Informations
+  },
+  {
+    name: "auth",
+    path: "/auth",
+    component: Auth
   }
 ];
 
-const Router = new VueRouter({
+const router = new VueRouter({
   mode: "history",
   routes
 });
 
-Router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) => {
   const json = localStorage.getItem(userKey);
   if (to.matched.some(record => record.meta.requiresTeacher)) {
     const user = JSON.parse(json);
@@ -100,4 +100,4 @@ Router.beforeEach((to, from, next) => {
   }
 });
 
-export default Router;
+export default router;
