@@ -31,6 +31,12 @@ list_professor:
   methods:
     - GET
 
+detail_professor:
+  path: /professor/{id}
+  controller: App\Controller\ControllerProfessor::detalheProfessor
+  methods:
+    - GET
+
 update_professor:
   path: /professor/{id}
   controller: App\Controller\ControllerProfessor::updateProfessor

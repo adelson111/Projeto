@@ -1,9 +1,16 @@
 <template>
   <div class="category-admin">
     <b-table hover striped :items="projects" :fields="fields">
-      <template slot="actns">
-        <b-button variant="warning" @click="alert()" class="mr-2">
+      <template slot="actions" slot-scope="data">
+        <b-button
+          variant="warning"
+          @click="loadArticle(data.item)"
+          class="mr-2"
+        >
           <i class="fa fa-pencil"></i>
+        </b-button>
+        <b-button variant="danger" @click="loadArticle(data.item, 'remove')">
+          <i class="fa fa-trash"></i>
         </b-button>
       </template>
     </b-table>

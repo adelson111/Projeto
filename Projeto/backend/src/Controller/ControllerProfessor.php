@@ -33,6 +33,14 @@ class ControllerProfessor extends GenericController
         $this->encoder = $encoder;
     }
 
+    public function detalheProfessor(int $id): Response{
+
+        $entity = $this->objectRepository->find($id);
+
+        return new JsonResponse($entity);
+
+    }
+
     public function createProfessor(Request $request):Response
     {
         $content = json_decode($request->getContent());

@@ -39,36 +39,41 @@ return [
         0 => '{^(?'
                 .'|/alunos/([^/]++)(*:23)'
                 .'|/pro(?'
-                    .'|fessor/([^/]++)(*:52)'
+                    .'|fessor/([^/]++)(?'
+                        .'|(*:55)'
+                    .')'
                     .'|jeto(?'
                         .'|/(?'
-                            .'|([^/]++)(*:78)'
-                            .'|vincular/([^/]++)(*:102)'
-                            .'|desvincular/([^/]++)(*:130)'
+                            .'|([^/]++)(*:82)'
+                            .'|vincular/([^/]++)(*:106)'
+                            .'|desvincular/([^/]++)(*:134)'
                             .'|([^/]++)(?'
-                                .'|(*:149)'
+                                .'|(*:153)'
                             .')'
                         .')'
-                        .'|Tipo/([^/]++)(*:172)'
-                        .'|Filtro/([^/]++)(*:195)'
+                        .'|Tipo/([^/]++)(*:176)'
+                        .'|Filtro/([^/]++)(*:199)'
                     .')'
                 .')'
-                .'|/visitante/([^/]++)(*:224)'
+                .'|/visitante/([^/]++)(*:228)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
         23 => [[['_route' => 'update_aluno', '_controller' => 'App\\Controller\\ControllerAluno::updateAluno'], ['id'], ['PUT' => 0], null, false, true, null]],
-        52 => [[['_route' => 'update_professor', '_controller' => 'App\\Controller\\ControllerProfessor::updateProfessor'], ['id'], ['PUT' => 0], null, false, true, null]],
-        78 => [[['_route' => 'update_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::updateProjeto'], ['projetoId'], ['PUT' => 0], null, false, true, null]],
-        102 => [[['_route' => 'vincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::vincularAlunoEntity'], ['id'], ['PUT' => 0], null, false, true, null]],
-        130 => [[['_route' => 'desvincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::desvincularAluno'], ['id_projeto'], ['PUT' => 0], null, false, true, null]],
-        149 => [
+        55 => [
+            [['_route' => 'detail_professor', '_controller' => 'App\\Controller\\ControllerProfessor::detalheProfessor'], ['id'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'update_professor', '_controller' => 'App\\Controller\\ControllerProfessor::updateProfessor'], ['id'], ['PUT' => 0], null, false, true, null],
+        ],
+        82 => [[['_route' => 'update_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::updateProjeto'], ['projetoId'], ['PUT' => 0], null, false, true, null]],
+        106 => [[['_route' => 'vincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::vincularAlunoEntity'], ['id'], ['PUT' => 0], null, false, true, null]],
+        134 => [[['_route' => 'desvincularAlunoProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::desvincularAluno'], ['id_projeto'], ['PUT' => 0], null, false, true, null]],
+        153 => [
             [['_route' => 'detail_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::detalheProjeto'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'removeProjeto', '_controller' => 'App\\Controller\\ControllerProjeto::remove'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        172 => [[['_route' => 'type_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarTipo'], ['texto'], ['GET' => 0], null, false, true, null]],
-        195 => [[['_route' => 'filter_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], ['texto'], ['GET' => 0], null, false, true, null]],
-        224 => [
+        176 => [[['_route' => 'type_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarTipo'], ['texto'], ['GET' => 0], null, false, true, null]],
+        199 => [[['_route' => 'filter_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::pesquisarProjeto'], ['texto'], ['GET' => 0], null, false, true, null]],
+        228 => [
             [['_route' => 'remove_visitante', '_controller' => 'App\\Controller\\ControllerVisitante::remove'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
