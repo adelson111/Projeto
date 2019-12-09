@@ -10,6 +10,7 @@ use App\Helper\ProjetoFactory;
 use App\Helper\HandleRequest;
 use App\Repository\ProjetoRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Firebase\JWT\JWT;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -95,6 +96,35 @@ class ControllerProjeto extends GenericController
 
         return new JsonResponse($trainings);
     }
+
+    public function projetoProfessor(Request $request):Response{
+
+
+//
+//        $token = str_replace('Bearer ', '', $request->headers->get('Authorization'));
+//        $tokenDis = JWT::decode($token, 'chave',array('HS256'));
+//        $emProfessor = $this->getDoctrine()->getManager();
+//        $professor = $emProfessor->getRepository(Professor::class)->findOneBy(array('Usuario'=>$tokenDis->id));
+//
+        $query = $this->entityManager->createQueryBuilder();
+
+        //ESTA DESGRAÇA FUNCIONOU, PEGA CARAI, MIZERA, AGORA VAI, VÃO TOMAR NO CÚ BANDO DE MIZERA
+//        $query->select('p')->from('App\Entity\Projeto','p')->
+//        innerJoin('p.professor','pf')->where('pf.id = :prof')->setParameter(':prof',$professor->getId());
+
+        $query->select('p')->from('App\Entity\Projeto','p')->
+        innerJoin('p.professor','pf')->where('pf.id = :prof')->setParameter(':prof',4);
+
+
+
+
+        $projetos =  $query->getQuery()->getResult();
+
+//        return new JsonResponse($query->getQuery()->getSQL());
+
+        return new JsonResponse($projetos);
+    }
+
     public function desvincularAluno(int $id_projeto, Request $request):Response
     {
 //        $projeto = $this->objectRepository->find($id_projeto);

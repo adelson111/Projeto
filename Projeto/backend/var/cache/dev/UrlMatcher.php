@@ -24,6 +24,7 @@ return [
             [['_route' => 'create_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::create'], null, ['POST' => 0], null, false, false, null],
             [['_route' => 'list_projeto', '_controller' => 'App\\Controller\\ControllerProjeto::search'], null, ['GET' => 0], null, false, false, null],
         ],
+        '/projetoProfessor' => [[['_route' => 'projetoProfessor', '_controller' => 'App\\Controller\\ControllerProjeto::projetoProfessor'], null, ['GET' => 0], null, false, false, null]],
         '/visitantes' => [
             [['_route' => 'create_visitante', '_controller' => 'App\\Controller\\ControllerVisitante::create'], null, ['POST' => 0], null, false, false, null],
             [['_route' => 'lista_visitantes', '_controller' => 'App\\Controller\\ControllerVisitante::search'], null, ['GET' => 0], null, false, false, null],

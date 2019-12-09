@@ -57,7 +57,7 @@ class ControllerLoginController extends AbstractController
             return new JsonResponse(['erro'=>'Usuário ou senha inválido'], Response::HTTP_UNAUTHORIZED);
         }
         $da = new \DateTime();
-        $payload = array('email'=>$usuario->getEmail(), 'roles'=>$usuario->getRoles(), 'iat'=> $da->getTimestamp(),
+        $payload = array('id'=>$usuario->getId(),'email'=>$usuario->getEmail(), 'roles'=>$usuario->getRoles(), 'iat'=> $da->getTimestamp(),
             'exp'=>$da->getTimestamp()+ (60*60*24*3));
         $token = JWT::encode($payload, 'chave','HS256');
         return new JsonResponse([$payload, 'acess_token'=>$token]);
@@ -70,12 +70,12 @@ class ControllerLoginController extends AbstractController
         print("AAAAAAAAA");
         $req_cont = json_decode($request->getContent());
         $da = new \DateTime();
-        echo $req_cont->acess_token;
         if($req_cont){
             $senha = $req_cont->acess_token;
             $token = JWT::decode($senha, 'chave',array('HS256'));
             if($token->exp*1000 > $da->getTimestamp()){
                 return new JsonResponse(true);
+
             }
         }
         return new JsonResponse(false);

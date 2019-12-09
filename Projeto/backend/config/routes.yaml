@@ -55,6 +55,12 @@ list_projeto:
   methods:
     - GET
 
+projetoProfessor:
+  path: /projetoProfessor
+  controller: App\Controller\ControllerProjeto::projetoProfessor
+  methods:
+    - GET
+
 type_projeto:
   path: /projetoTipo/{texto}
   controller: App\Controller\ControllerProjeto::pesquisarTipo
