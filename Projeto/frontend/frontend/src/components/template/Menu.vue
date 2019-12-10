@@ -1,5 +1,6 @@
 <template>
-    <aside class="menu" v-show="isMenuVisible">
+    <div class="menu">
+        <aside class="menu-aside" v-show="isMenuVisible">
         <div class="menu-filter">
             <i class="fa fa-search fa-lg"></i>
             <input type="text" placeholder="Buscar projeto" 
@@ -8,29 +9,24 @@
         </div>
         <Tree :data="treeData"  :filter="treeFilter" ref="tree" />
     </aside>
+    <div class="verticalMenu">
+        <router-link to="/home-admin">Pesquisa </router-link>    
+        <router-link to="/home-admin">Extenção  </router-link>     
+        <router-link to="/home-admin">TCC's  </router-link>     
+    </div>
+    </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import Tree from 'liquor-tree'
 
 export default {
     name: 'Menu',
     computed: mapState(['isMenuVisible']),
-    components: {Tree},
 
     data(){
         return{
             treeFilter: '',
-            treeData: [
-                { text: 'Pesquisa' },
-                { text: 'Extensão' },
-                { text: 'TCC', children: [
-                      { text: 'Python e Django'},
-                      { text: 'NodeJS'},
-                      { text: 'React'},
-                ]},          
-            ], 
             filter:{
                 emptyText: 'Projeto não encontrado!'
             }
@@ -42,27 +38,31 @@ export default {
 <style>
     .menu{
         grid-area: menu;
-        background-color:#7CD17F;
-        
+        background-color:#7CD17F;        
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
     }
-    .menu a, .menu span{
+    
+    .verticalMenu{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        padding: 12px;
+    }
+    .verticalMenu a:hover{
+        background-color: #2F4F4F;
         color: #fff;
         text-decoration: none;
     }
-
-    .menu .tree-node.selected > .tree-content,
-    .menu .tree-node .tree-content:hover
-    {
-        background-color: rgba(255, 255, 255, 0.2)
+    .verticalMenu a{
+        color: #000;
+        font-size: 1.3rem;
+        font-weight: 300;
+        text-decoration: none;
     }
-
-    .tree-arrow.has-child{
-        filter: brightness(2);
-    }
-
     .menu .menu-filter{
         display: flex;
         justify-content: center;
