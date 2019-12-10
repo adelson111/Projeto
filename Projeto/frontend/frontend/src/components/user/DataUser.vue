@@ -33,13 +33,15 @@
          
             <b-row>
                 <b-col md="6" sm="12">
-                    <b-form-group label="Foto:" label-for="photo"  >
-                          <b-form-file id="photo"></b-form-file>
-                    </b-form-group>
-                </b-col>
-                <b-col md="6" sm="12">
                     <b-form-group label="CPF:" label-for="cpf"  >
                           <b-form-input id="cpf"></b-form-input>
+                    </b-form-group>
+                </b-col>
+                 <b-col md="6" sm="12">
+                    <b-form-group label="E-mail:" label-for="email"  >
+                        <b-form-input id="email" type="email">
+
+                        </b-form-input>
                     </b-form-group>
                 </b-col>
             </b-row>

@@ -11,9 +11,6 @@
                     <b-tab title="Cadastrar Projeto" active>
                         <AddProject/>
                     </b-tab>
-                    <b-tab title="Equipes">
-                        <ToolsAdmin/>
-                    </b-tab>
                     <b-tab title="Projetos">
                         <CategoryAdmin/>
                     </b-tab>
@@ -27,13 +24,15 @@
 import PageTitle from '../template/PageTitle'
 import CategoryAdmin from './CategoryAdmin'
 import AddProject from './AddProject'
-import ToolsAdmin from './ToolsAdmin'
+
 export default {
     name: 'AdminPages',
-    components: { PageTitle, CategoryAdmin, AddProject, ToolsAdmin }
+    components: { PageTitle, CategoryAdmin, AddProject }
 }
 </script>
 
 <style>
-    
+    .card-header ul li a{
+        color: black
+    }
 </style>
