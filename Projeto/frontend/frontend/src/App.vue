@@ -40,7 +40,7 @@ import ContentVisitor from "./components/template/visitor/ContentVisitor";
 import FooterVisitor from "./components/template/visitor/FooterVisitor";
 
 export default {
-  name: "app",
+  name: "App",
   components: {
     Header,
     Menu,
@@ -53,7 +53,7 @@ export default {
     Loading
   },
   computed: mapState(["isMenuVisible", "user"]),
-  data() {
+  data: function() {
     return {
       validatingToken: false
     };
