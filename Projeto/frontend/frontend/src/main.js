@@ -5,9 +5,9 @@ import "./config/msgs";
 import "./config/vuemq";
 import store from "./config/store";
 import router from "./config/router";
-
 import Carousel3d from "vue-carousel-3d";
 // axios.defaults.headers.post["Content-Type"] = "application/json";
+Vue.config.productionTip = false;
 new Vue({
   store,
   Carousel3d,

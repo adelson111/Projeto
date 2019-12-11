@@ -1,8 +1,23 @@
 <template>
-    <div class="carousel-visitor">
-       <carousel-3d >
-           
-            <slide :index="0">
+  <div class="carousel-visitor">
+    <carousel-3d :count="projetos.length">
+      <slide v-for="projeto in projetos.slice(0,6)" :index="projeto.id" :key="projeto.id">
+        <router-link :to="{name: 'researchProjectById', params:{id:projeto.id}}">
+          <h4>{{projeto.nome}}</h4>
+        </router-link>
+        <img
+          v-if="projeto.tipo==='Projeto-de-Pesquisa'"
+          src="../../../assets/projeto_pesquisa.jpg"
+          alt
+        />
+        <img
+          v-if="projeto.tipo==='Projeto-de-Extensao'"
+          src="../../../assets/projeto_extensao.png"
+          alt
+        />
+        <img v-if="projeto.tipo==='TCC'" src="../../../assets/tcc.jpg" alt />
+      </slide>
+      <!-- <slide :index="0">
                 <h4>Projeto do meu pau</h4>
                 <img src="https://pbs.twimg.com/profile_images/1036834060008673280/zJ8N9gjF_400x400.jpg" alt="">
                 
@@ -24,46 +39,63 @@
             <slide :index="4">
                 <h4>Projeto do meu pau</h4>
                 <img src="https://img-anuncio.listamais.com.br/logo-anuncios/500903-30-05-2019-17-38-05.png" alt="">
-            </slide>
-            
-        </carousel-3d>
-    </div>
+      </slide>-->
+    </carousel-3d>
+  </div>
 </template>
 
 <script>
-import { Carousel3d, Slide } from 'vue-carousel-3d';
+import { baseApiUrl } from "@/global";
+import axios from "axios";
+import { Carousel3d, Slide } from "vue-carousel-3d";
 
 export default {
-    name: 'CarouselVisitor',
-    components: {Carousel3d, Slide },
-    data(){
-        return{
-        }
-    },
-}
+  name: "CarouselVisitor",
+  components: { Carousel3d, Slide },
+
+  data() {
+    return {
+      projetos: {}
+    };
+  },
+  methods: {
+    getProjetos() {
+      const url = `${baseApiUrl}/projeto`;
+      axios.get(url).then(res => (this.projetos = res.data));
+    }
+  },
+  mounted() {
+    this.getProjetos();
+  }
+};
 </script>
 
 <style scoped>
-    .carousel-visitor{
-        width: 100%;
-    }
-    .carousel-3d-container{
-        width: 100%;
-        margin: 0;
-        background-color: rgb(193, 197, 189);
-    }
-    .carousel-3d-slider{
-        width: 100%;
-    }
-    .carousel-3d-slide{
-        background-color: rgb(33, 209, 77);
-        border: 0;
-        padding: 5px;
-    }
-     .carousel-3d-slide h4{
-        text-align: center
-    } 
-    .cont{
-        z-index: inherit
-    }
+a {
+  text-decoration: none;
+  color: #000;
+}
+.carousel-visitor {
+  width: 100%;
+}
+.carousel-3d-container {
+  width: 100%;
+  margin: 0;
+  background-color: rgba(193, 197, 189, 0.2);
+}
+.carousel-3d-slider {
+  width: 100%;
+}
+.carousel-3d-slide {
+  /* background-color: rgb(33, 209, 77); */
+  background-color: rgb(33, 209, 77);
+  border: 0;
+  padding: 5px;
+}
+.carousel-3d-slide h4 {
+  text-align: center;
+}
+.cont {
+  z-index: inherit;
+}
 </style>

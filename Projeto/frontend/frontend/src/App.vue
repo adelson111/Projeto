@@ -1,9 +1,5 @@
 <template>
-  <div
-    id="app"
-    :class="{ 'hide-menu': !isMenuVisible || !user }"
-    v-if="validatingToken === false"
-  >
+  <div id="app" :class="{ 'hide-menu': !isMenuVisible || !user }" v-if="validatingToken === false">
     <Header
       title="Sistema de Divulgação e Gegenciamento de Projetos Acadêmicos"
       :hideToggle="!user"
