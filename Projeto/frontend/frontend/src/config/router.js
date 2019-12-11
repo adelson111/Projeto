@@ -13,10 +13,10 @@ import LoginAndRegister from "../components/login/LoginAndRegister";
 import Informations from "../components/template/visitor/Informations";
 import Register from "../components/login/Register";
 import Auth from "../components/auth/Auth";
-import ProjectByCategory from '../components/template/ProjectByCategory';
-import TccsTable from '../components/admin/TccsTable';
-import SearchTable from '../components/admin/SearchTable'
-import ExtensionTable from '../components/admin/ExtensionTable'
+import ProjectByCategory from "../components/template/ProjectByCategory";
+import TccsTable from "../components/admin/TccsTable";
+import SearchTable from "../components/admin/SearchTable";
+import ExtensionTable from "../components/admin/ExtensionTable";
 import { userKey } from "@/global";
 // Vue.use(VueRouter);
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerCFaoRjK;
+namespace ContainerAySQkyl;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -933,13 +933,13 @@ class srcApp_KernelDevDebugContainer extends Container
                     1 => 'authorization',
                 ],
                 'expose_headers' => [
-
+                    0 => 'Link',
                 ],
                 'allow_methods' => [
                     0 => 'GET',
-                    1 => 'OPTIONS',
-                    2 => 'POST',
-                    3 => 'PUT',
+                    1 => 'PUT',
+                    2 => 'OPTIONS',
+                    3 => 'POST',
                     4 => 'PATCH',
                     5 => 'DELETE',
                 ],

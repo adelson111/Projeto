@@ -3,7 +3,13 @@
     <PageTitle icon="fa fa-file" main="Trabalhos de Conclusão de Curso" sub="Meus Projetos" />
 
     <div>
-      <b-table striped hover :items="projects" :fields="fields"></b-table>
+      <b-table hover striped :items="projects" :fields="fields">
+        <template v-slot:cell(action)="data">
+          <b-button variant="warning" @click="loadArticle(data.item)" class="mr-2">
+            <i class="fa fa-pencil"></i>
+          </b-button>
+        </template>
+      </b-table>
     </div>
   </div>
 </template>
@@ -19,10 +25,10 @@ export default {
     return {
       projects: {},
       fields: [
-        // { Título: 'Sei n', Orientador: 'Fábio Penha', Orientando: 'Kaio' },
         { key: "nome", label: "Título" },
         { key: "professor[0].nome", label: "Orientador" },
-        { key: "alunos[0].nome", label: "Orientando" }
+        { key: "alunos[0].nome", label: "Orientando" },
+        { key: "action", label: "Ação" }
       ]
     };
   },

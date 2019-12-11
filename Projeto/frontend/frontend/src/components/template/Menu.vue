@@ -66,8 +66,12 @@ export default {
 </script>
 
 <style>
+.links {
+  color: #fff;
+}
 .links:hover {
   text-decoration: none;
+  color: #fff;
 }
 .menu {
   grid-area: menu;

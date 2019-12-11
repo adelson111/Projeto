@@ -6,6 +6,7 @@
       <div class="auth-title">{{ showSignup ? "Cadastro" : "Login" }}</div>
       <input v-model="user.usuario" name="usuario" type="text" placeholder="E-mail" />
       <input v-model="user.password" name="password" type="password" placeholder="Senha" />
+      <router-link :to="{name:'register'}" v-if="user!==anonymous || !user">Registra-se</router-link>
       <button @click="sigin">Entrar</button>
     </div>
   </div>
@@ -27,7 +28,7 @@ export default {
         .then(res => {
           this.$store.commit("setUser", res.data);
           localStorage.setItem(userKey, JSON.stringify(res.data));
-          this.$router.push({ path: "/" });
+          this.$router.push({ path: "/admin" });
         })
         .catch(showError);
     }
@@ -41,6 +42,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 .auth-modal {
