@@ -34,7 +34,7 @@ class ProjetoFactory  implements EntityFactory
         $professor = $this->professorRepository->find($content->id_professor);
 //        $professor = $this->professorRepository->find(1);
         $projeto->setNome($content->nome)
-        ->setFinalizado($content->finalizado)
+        ->setFinalizado(false)
         ->setAcompanhamentoAvaliacaoProjeto($content->acompanhamentoAvaliacaoProjeto)
         ->setAreaConhecimento($content->areaConhecimento)
         ->setCampus($content->campus)

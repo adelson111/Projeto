@@ -12,7 +12,8 @@
     </div>
     <div class="project-info">
       <h2>{{ project.nome}}</h2>
-      <p>{{ project.resumo }}</p>
+      <!-- <p>{{ project.resumo }}</p> -->
+      <p v-html="project.resumo"></p>
       <span v-if="project.alunos[0]">
         <strong>Autor:</strong>
         <p>{{ project.alunos[0].nome }}</p>
