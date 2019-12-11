@@ -2,10 +2,63 @@
   <div class="project-by-id">
     <PageTitle icon="fa fa-file-o" :main="projeto.nome" :sub="projeto.campus" />
 
-    <div class="project-content" v-html="projeto">
-      <div class="resumo">
+    <div class="project-content" >
+       <div class=" proj">
+        <h4>Orientadores:</h4>
+        <p v-for="prof in projeto.professor " :key="prof">{{prof.nome}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Orientandos:</h4>
+        <p v-for="aluno in projeto.alunos " :key="aluno">{{aluno.nome}}</p>
+      </div>
+      <div class=" proj" v-for="arq in projeto.arquivos" :key="arq">
+        <img :src="arq" alt="">
+      </div>
+      <div class=" proj">
+        <h4>Resumo:</h4>
         <p>{{projeto.resumo}}</p>
       </div>
+      <div class=" proj">
+        <h4>Introdução:</h4>
+        <p>{{projeto.introducao}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Justificativa:</h4>
+        <p>{{projeto.justificativa}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Fundamentação Teórica:</h4>
+        <p>{{projeto.fundamentacaoTeorica}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Objetivo Geral:</h4>
+        <p>{{projeto.objetivoGeral}}</p>
+      </div>
+       <div class=" proj">
+         <h4>Metodologia:</h4>
+        <p>{{projeto.metodologiaExecucaoProjeto}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Acompanhamento:</h4>
+        <p>{{projeto.acompanhamentoAvaliacaoProjeto}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Resultados Esperados:</h4>
+        <p>{{projeto.resultadoEsperado}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Resultados Alcançados:</h4>
+        <p>{{projeto.resultadoAlcancado}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Resultados Observações:</h4>
+        <p>{{projeto.observacao}}</p>
+      </div>
+      <div class=" proj">
+        <h4>Referências:</h4>
+        <p>{{projeto.referancia}}</p>
+      </div>
+     
     </div>
     <div
       class="fb-comments"
@@ -28,6 +81,7 @@
 </template>
 
 <script>
+import img1 from '../../../assets/tcc.jpg'
 import { baseApiUrl } from "../../../global";
 import axios from "axios";
 import PageTitle from "../PageTitle";
@@ -55,7 +109,7 @@ export default {
           timezone: "America Sao_Paulo"
         },
         areaConhecimento: "Area de Conhecimento 2",
-        resumo: "Vai da merdamerdamerdamerdamerdamerdamerda ",
+        resumo: "Vai da merdamerdamerdamerdamerdamerdamerd merdamerdamerdamerdamerdamerdamerdame rdamerdamerdamerdamerdamerdamerdamerdamerdamerd amerdamerdamerdamerda merdamerdamerdamerdamerdamerdamerdamerdamerdamerdamerdam erdamerdamerdaa ",
         introducao: "Introdução 2",
         justificativa: "Justificativa 2",
         fundamentacaoTeorica: "Fundamentação Teórica 2",
@@ -73,7 +127,16 @@ export default {
             areaAtuacao: "A1",
             curriculoLatte: "cur1",
             usuario: "professor34@gmail.com"
-          }
+          },
+          {
+            id: 4,
+            nome: "Professor24 ",
+            cpf: "111222332",
+            matricula: "20156655",
+            areaAtuacao: "A1",
+            curriculoLatte: "cur1",
+            usuario: "professor34@gmail.com"
+          },
         ],
         alunos: [
           {
@@ -85,7 +148,7 @@ export default {
             curriculoLatte: "cur3"
           }
         ],
-        arquivos: [],
+        arquivos: [img1],
         resultadoAlcancado: "Nunca funciona de primeria",
         resultadoDisseminacaoEsperado: "Eu falei que ia da merda",
         observacao: "Observações",
@@ -113,6 +176,7 @@ export default {
   border-radius: 8px;
   margin-bottom: 20px;
   flex-direction: column;
+  flex-wrap: wrap;
   margin-top: 20px;
   background-color: #fff;
   padding: 20px;
@@ -120,13 +184,28 @@ export default {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
 
-.resumo {
-  width: 80%;
-}
 .project-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background-color: #fff;
   border-radius: 8px;
   padding: 25px;
+}
+
+.project-content .proj{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 12px;
+}
+
+.proj p{
+  flex-wrap: wrap;
+  width: 100%;
+  white-space: wrap;
+  text-align: justify;
 }
 
 .project-content pre {
