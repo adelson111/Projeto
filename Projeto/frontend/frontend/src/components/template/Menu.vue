@@ -1,18 +1,51 @@
 <template>
-  <div class="menu">
-    <aside class="menu-aside" v-show="isMenuVisible">
-      <div class="menu-filter">
-        <i class="fa fa-search fa-lg"></i>
-        <input type="text" placeholder="Buscar projeto" v-model="treeFilter" class="filter-field" />
-      </div>
-      <Tree :data="treeData" :filter="treeFilter" ref="tree" />
-    </aside>
-    <div class="verticalMenu">
-      <router-link to="/home-admin">Pesquisa</router-link>
-      <router-link to="/home-admin">Extenção</router-link>
-      <router-link to="/home-admin">TCC's</router-link>
+  <aside class="menu" v-show="isMenuVisible">
+    <div class="menu-filter">
+      <i class="fa fa-search fa-lg"></i>
+      <input type="text" placeholder="Buscar projeto" v-model="treeFilter" class="filter-field" />
     </div>
-  </div>
+    <div role="tree" class="tree">
+      <ul class="tree-root">
+        <router-link to="/meus-projetos-de-pesquisa" class="links">
+          <li data-id="7adb27d4-380a-c909-d43e-330d8d61cdc3" class="tree-node draggable">
+            <div class="tree-content" style="padding-left: 0px;">
+              <i class="tree-arrow ltr"></i>
+              <!---->
+              <span tabindex="-1" class="tree-anchor">
+                <span>Pesquisa</span>
+              </span>
+            </div>
+            <!---->
+          </li>
+        </router-link>
+        <router-link to="/meus-projetos-de-extensao" class="links">
+          <li data-id="cb78b744-af39-1d0a-f382-8270114363ce" class="tree-node draggable">
+            <div class="tree-content" style="padding-left: 0px;">
+              <i class="tree-arrow ltr"></i>
+              <!---->
+              <span tabindex="-1" class="tree-anchor">
+                <span>Extensão</span>
+              </span>
+            </div>
+            <!---->
+          </li>
+        </router-link>
+        <router-link to="/meus-tccs" class="links">
+          <li data-id="f730f105-309c-87a2-5bd9-1b99e1edd242" class="tree-node draggable">
+            <div class="tree-content" style="padding-left: 0px;">
+              <i class="tree-arrow ltr"></i>
+              <!---->
+              <span tabindex="-1" class="tree-anchor">
+                <span>TCC</span>
+              </span>
+            </div>
+            <!---->
+          </li>
+        </router-link>
+      </ul>
+      <!---->
+    </div>
+  </aside>
 </template>
 
 <script>
@@ -57,11 +90,19 @@ export default {
   color: #fff;
   text-decoration: none;
 }
-.verticalMenu a {
-  color: #000;
+
+.tree {
+  padding: 12px;
   font-size: 1.3rem;
-  font-weight: 300;
-  text-decoration: none;
+}
+
+.menu .tree-node.selected > .tree-content,
+.menu .tree-node .tree-content:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.tree-arrow.has-child {
+  filter: brightness(2);
 }
 .menu .menu-filter {
   display: flex;
