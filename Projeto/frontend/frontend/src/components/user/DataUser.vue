@@ -1,7 +1,7 @@
 <template>
   <div class="data-user">
     <b-form>
-      <input type="hidden" id="teacher-id" />
+      <input type="hidden" id="id" v-model="professor.id" />
 
       <b-row>
         <b-col md="12" sm="12">
@@ -11,9 +11,8 @@
               type="text"
               v-model="professor.nome"
               :placeholder="professor.nome"
-              readonly="false"
-            >
-            </b-form-input>
+              :readonly="mode==='block'"
+            ></b-form-input>
           </b-form-group>
         </b-col>
       </b-row>
@@ -25,9 +24,8 @@
               id="matricula"
               v-model="professor.matricula"
               type="text"
-              readonly="false"
-            >
-            </b-form-input>
+              :readonly="mode==='block'"
+            ></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="6" sm="12">
@@ -35,9 +33,8 @@
             <b-form-input
               id="occupation-area"
               v-model="professor.areaAtuacao"
-              readonly="false"
-            >
-            </b-form-input>
+              :readonly="mode==='block'"
+            ></b-form-input>
           </b-form-group>
         </b-col>
       </b-row>
@@ -50,11 +47,7 @@
         </b-col>
         <b-col md="6" sm="12">
           <b-form-group label="CPF:" label-for="cpf">
-            <b-form-input
-              id="cpf"
-              v-model="professor.cpf"
-              readonly="false"
-            ></b-form-input>
+            <b-form-input id="cpf" v-model="professor.cpf" :readonly="mode==='block'"></b-form-input>
           </b-form-group>
         </b-col>
       </b-row>
@@ -66,43 +59,37 @@
               id="email"
               v-model="professor.usuario"
               type="email"
-              readonly="false"
-            >
-            </b-form-input>
+              :readonly="mode==='block'"
+            ></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="6" sm="12">
           <b-form-group label="Currículo Lattes:" label-for="lattes">
-            <b-form-input
-              id="lattes"
-              v-model="professor.curriculoLatte"
-              readonly="false"
-            >
-            </b-form-input>
+            <b-form-input id="lattes" v-model="professor.curriculoLatte" :readonly="mode==='block'"></b-form-input>
           </b-form-group>
         </b-col>
       </b-row>
 
-      <b-row>
+      <!-- <b-row>
         <b-col md="6" sm="12">
           <b-form-group label="Senha:" label-for="password">
-            <b-form-input id="password"> </b-form-input>
+            <b-form-input id="password" v-model="professor"></b-form-input>
           </b-form-group>
         </b-col>
         <b-col md="6" sm="12">
           <b-form-group label="Confirmar Senha:" label-for="password">
-            <b-form-input id="password2" type="password"> </b-form-input>
+            <b-form-input id="password2" type="password"></b-form-input>
           </b-form-group>
         </b-col>
-      </b-row>
+      </b-row>-->
 
       <hr />
 
-      <b-button variant="primary">Salvar</b-button>
+      <b-button variant="primary" @click="save">Salvar</b-button>
 
-      <b-button variant="info" class="ml-2">Editar</b-button>
+      <b-button variant="info" @click="editar" class="ml-2">Editar</b-button>
 
-      <b-button class="ml-2">Cancelar</b-button>
+      <b-button class="ml-2" @click="cancelar">Cancelar</b-button>
     </b-form>
   </div>
 </template>
@@ -115,11 +102,32 @@ export default {
   name: "DataUser",
   data() {
     return {
+      mode: "block",
       professor: {},
       professores: []
     };
   },
   methods: {
+    editar() {
+      this.mode = "editar";
+    },
+    cancelar() {
+      this.mode = "block";
+    },
+    save() {
+      alert(`${baseApiUrl}/professor/${this.professor.id}`);
+      axios
+        .put(`${baseApiUrl}/professor/${this.professor.id}`, {
+          nome: this.professor.nome,
+          senha: this.professor.senha,
+          cpf: this.professor.cpf,
+          matricula: this.professor.matricula,
+          foto: this.professor.foto,
+          areaAtuacao: this.professor.areaAtuacao,
+          curriculoLatte: this.professor.curriculoLatte
+        })
+        .then(this.$toasted.global.defaultSuccess(), this.cancelar());
+    },
     loadTeacher() {
       const url = `${baseApiUrl}/professor/3`;
       axios.get(url).then(res => {
