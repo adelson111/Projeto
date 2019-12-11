@@ -1,5 +1,4 @@
 <template>
-<<<<<<< HEAD
     
         <aside class="menu" v-show="isMenuVisible">
             <div class="menu-filter">
@@ -38,40 +37,14 @@
         </aside>
        
     
-=======
-    <div class="menu">
-        <aside class="menu-aside" v-show="isMenuVisible">
-        <div class="menu-filter">
-            <i class="fa fa-search fa-lg"></i>
-            <input type="text" placeholder="Buscar projeto" 
-                v-model="treeFilter" class="filter-field"
-            >
-        </div>
-        <Tree :data="treeData"  :filter="treeFilter" ref="tree" />
-    </aside>
-    <div class="verticalMenu">
-        <router-link to="/home-admin">Pesquisa </router-link>    
-        <router-link to="/home-admin">Extenção  </router-link>     
-        <router-link to="/home-admin">TCC's  </router-link>     
-    </div>
-    </div>
->>>>>>> 3c4c7461032f088f2115f89af792c83278abc54f
 </template>
 
 <script>
 import { mapState } from 'vuex'
-<<<<<<< HEAD
-
-=======
->>>>>>> 3c4c7461032f088f2115f89af792c83278abc54f
 
 export default {
     name: 'Menu',
     computed: mapState(['isMenuVisible']),
-<<<<<<< HEAD
-=======
-
->>>>>>> 3c4c7461032f088f2115f89af792c83278abc54f
     data(){
         return{
             treeFilter: '',
@@ -90,11 +63,7 @@ export default {
     }
     .menu{
         grid-area: menu;
-<<<<<<< HEAD
         background-color:#7CD17F;
-=======
-        background-color:#7CD17F;        
->>>>>>> 3c4c7461032f088f2115f89af792c83278abc54f
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
@@ -113,7 +82,6 @@ export default {
         color: #fff;
         text-decoration: none;
     }
-<<<<<<< HEAD
 
     .tree{
         padding: 12px;
@@ -128,13 +96,6 @@ export default {
 
     .tree-arrow.has-child{
         filter: brightness(2);
-=======
-    .verticalMenu a{
-        color: #000;
-        font-size: 1.3rem;
-        font-weight: 300;
-        text-decoration: none;
->>>>>>> 3c4c7461032f088f2115f89af792c83278abc54f
     }
     .menu .menu-filter{
         display: flex;

@@ -1,10 +1,6 @@
 import Vue from "vue";
 //conexão com backend
 export const userKey = "_knowledge_user";
-<<<<<<< HEAD
-=======
-// export const baseApiUrl = "http://127.0.0.1:8000";
->>>>>>> 3c4c7461032f088f2115f89af792c83278abc54f
 export const baseApiUrl = "http://10.192.5.93:8000";
 
 //tratar erros com as mensagens do toasted
