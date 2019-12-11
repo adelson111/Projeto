@@ -8,7 +8,27 @@
         width="150px"
         alt="Imagem"
       />
-      <img src="@/assets/logo.png" height="150px" width="150px" alt="Imagem" />
+      <img
+        src="@/assets/tcc.jpg"
+        v-if="project.tipo==='TCC' ||project.tipo==='tcc'"
+        height="150px"
+        width="150px"
+        alt="Imagem"
+      />
+      <img
+        src="@/assets/projeto_extensao.png"
+        v-if="project.tipo==='Projeto-de-Extensao'"
+        height="150px"
+        width="150px"
+        alt="Imagem"
+      />
+      <img
+        src="@/assets/projeto_pesquisa.jpg"
+        v-if="project.tipo==='Projeto-de-Pesquisa'"
+        height="150px"
+        width="150px"
+        alt="Imagem"
+      />
     </div>
     <div class="project-info">
       <h2>{{ project.nome}}</h2>
