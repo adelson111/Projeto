@@ -51,7 +51,7 @@ export default {
   computed: mapState(["isMenuVisible", "user"]),
   data: function() {
     return {
-      validatingToken: true
+      validatingToken: false
     };
   },
   methods: {

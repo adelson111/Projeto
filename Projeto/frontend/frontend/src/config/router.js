@@ -13,6 +13,10 @@ import LoginAndRegister from "../components/login/LoginAndRegister";
 import Informations from "../components/template/visitor/Informations";
 import Register from "../components/login/Register";
 import Auth from "../components/auth/Auth";
+import ProjectByCategory from '../components/template/ProjectByCategory';
+import TccsTable from '../components/admin/TccsTable';
+import SearchTable from '../components/admin/SearchTable'
+import ExtensionTable from '../components/admin/ExtensionTable'
 import { userKey } from "@/global";
 // Vue.use(VueRouter);
 
@@ -23,6 +27,21 @@ const routes = [
     name: "home",
     path: "/home-admin",
     component: Home
+  },
+  {
+    name: "tccsTable",
+    path: "/meus-tccs",
+    component: TccsTable
+  },
+  {
+    name: "searchTable",
+    path: "/meus-projetos-de-pesquisa",
+    component: SearchTable
+  },
+  {
+    name: "extensionTable",
+    path: "/meus-projetos-de-extensao",
+    component: ExtensionTable
   },
   {
     name: "homeVisitor",
@@ -80,6 +99,11 @@ const routes = [
     name: "auth",
     path: "/auth",
     component: Auth
+  },
+  {
+    name: "projectByCategory",
+    path: "/projeto/:id/projetos",
+    component: ProjectByCategory
   }
 ];
 
