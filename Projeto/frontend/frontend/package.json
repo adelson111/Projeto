@@ -16,7 +16,7 @@
     "liquor-tree": "^0.2.70",
     "quasar": "^1.22.10",
     "sass-loader": "^8.0.2",
-    "vue": "^2.7.16",
+    "vue": "^3.0.0",
     "vue-carousel": "^0.18.0",
     "vue-carousel-3d": "^0.2.0",
     "vue-gravatar": "^1.4.1",
